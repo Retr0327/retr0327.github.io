@@ -92,13 +92,6 @@ nav ul li a:hover {
 }
 
 
-
-#about img{
-    width: 250px;
-    border-radius: 1000000px;
-    margin-right: 100px;
-}
-
 .about-text{
     transform: translateY(-15%);
     width: 550px;
@@ -130,4 +123,36 @@ nav ul li a:hover {
     font-family: Calibri;
     font-weight: bold;
     font-size: 16px; 
+}
+
+
+
+#profile {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;  */
+    justify-content: center; 
+}
+
+#profile img{
+    width: 250px;
+    border-radius: 1000000px;
+    margin-right: 100px;
+}
+
+
+.social-icon a{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6e3e3;
+    margin: 20px 10px;
+    border-radius: 50%;
+}
+
+.social-icon {
+    transform: translateX(17%);
+    display: flex;
 }
