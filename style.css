@@ -1,0 +1,91 @@
+/* Universal Settings
+--------------------------------------------------------------------------------------------------------------- */
+
+@charset "utf-8";
+body {
+    background: white;
+    margin: 0px;
+    padding: 0px;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* navigation
+--------------------------------------------------------------------------------------------------------------- */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 45px;
+    background-color: black;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 50);
+    padding: 15px 5%;
+}
+
+nav ul {
+    display: flex;
+    
+}
+
+nav ul li a {
+    margin: 25px;
+    font-family: myriad pro regular;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    /* opacity:1; */
+}
+
+
+nav ul li:last-child{
+    margin-right:10px;
+}
+
+
+.logo{
+    font-family: 'Merriweather', sans-serif;;
+    margin: 20px;
+    font-size:1.4rem; 
+    font-weight:700; 
+    color: #fff;
+}
+
+
+nav ul li a:hover {
+    visibility:visible; 
+    /* opacity:0.8; */
+    color: #97BDAB;
+}
+
+.banner {
+    width: 100%;
+    height: 480px;
+    background-image: url(img/fHn488K.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* 
+.contact-me {
+    width: 100%;
+    height: 280px;
+    background-image: url(img/project\ in\ your\ mind.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+
+
+/* #mainav ul li:hover > ul{visibility:visible; opacity:1;} */
