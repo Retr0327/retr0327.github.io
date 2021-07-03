@@ -181,3 +181,30 @@ nav ul li a:hover {
     color: white;
   }
 
+
+@media(max-width:1000px){
+    .about-text{
+        transform: translateY(-10%);
+        margin-left: 100px;
+    }
+    #profile{
+        transform: translateY(10%);
+    }
+}
+
+
+
+@media(max-width:750px){
+    #profile{
+        transform: translateY(-10%);
+    }
+    #about{
+        top: 0px;
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+        padding: 100px 0px;
+        align-items: center;
+    }
+}
+
