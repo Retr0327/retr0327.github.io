@@ -185,9 +185,7 @@ nav ul li a:hover {
 
 
 
-
-
-  
+@-ms-viewport{width:device-width;}
 
 @media screen and (max-width:1000px){
     .about-text{
@@ -237,5 +235,8 @@ nav ul li a:hover {
         padding-right: 10%;
         transform: translateX(-10%);
     }
+
+
+
 }
 
