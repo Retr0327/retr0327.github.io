@@ -87,6 +87,7 @@ nav ul li a:hover {
     position: relative;
     justify-content: space-evenly;
     align-items: center;
+    padding-bottom: 60px;
 }
 
 #about img {
@@ -182,7 +183,13 @@ nav ul li a:hover {
   }
 
 
-@media(max-width:1000px){
+
+
+
+
+  
+
+@media screen and (max-width:1000px){
     .about-text{
         transform: translateY(-10%);
         margin-left: 100px;
@@ -194,7 +201,7 @@ nav ul li a:hover {
 
 
 
-@media(max-width:750px){
+@media screen and (max-width:750px){
     #profile{
         transform: translateY(-10%);
     }
@@ -205,6 +212,30 @@ nav ul li a:hover {
         height: auto;
         padding: 100px 0px;
         align-items: center;
+    }
+}
+
+
+
+
+@media screen and (max-width:450px){
+    nav { 
+        width:100%;
+    }
+
+    #about{
+        top: 0px;
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+        padding: 100px 0px;
+        align-items: center;
+    }
+
+    .about-text{
+        width:100%;
+        padding-right: 10%;
+        transform: translateX(-10%);
     }
 }
 
