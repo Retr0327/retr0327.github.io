@@ -87,10 +87,16 @@ ul {
 }
 
 .about-text p:nth-child(2){
+  margin-bottom: 30px
+}
+
+.about-text p:nth-child(2), .about-text p:nth-child(3){
   color: black;
   font-family: Calibri; 
   font-size: 20px; 
+  margin-bottom: 30px
 }
+
 
 .profile  {
   width: 300px;
@@ -160,6 +166,7 @@ ul {
 
 #educatoin {
   margin-top: 50px; 
+  padding-bottom: 40px;
 }
 
 
@@ -186,6 +193,7 @@ ul {
   }
 
   #educatoin{
+    width: auto;
     padding-bottom: 100px;
   }
 
@@ -214,6 +222,7 @@ ul {
   }
 
   #educatoin{
+    width: auto;
     padding-bottom: 100px;
   }
 
@@ -224,18 +233,6 @@ ul {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @media screen and (max-width: 450px) {
@@ -281,6 +278,11 @@ ul {
 }
 
 #educatoin{
+  width: auto;
   padding-bottom: 100px;
+}
+.description p:nth-child(1)  {
+  /* font-size: 15px; */
+  line-height: 15px;
 }
 }
