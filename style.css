@@ -67,7 +67,7 @@ ul {
  
 .about-text {
   width: 65%;
-  margin-top: -22px;
+  margin-top: -45px;
   margin-left: 35px;
   height: 320px;
   /* box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);  */
@@ -123,6 +123,12 @@ ul {
   width: 230px;
   margin: 20px 0px 15px 0px;
 }
+
+.profile-text span {
+  font-size: 30px;
+  font-weight: 50px; 
+}
+
 
 .profile img { 
   border-radius: 10000px;
@@ -183,8 +189,8 @@ ul {
 @media screen and (max-width: 992px) {
   #about{
     justify-content: center;
-    flex-wrap: wrap;   
-    transform: translateX(-7%); 
+    flex-wrap: wrap;     
+    transform: translateX(-5%); 
   }
 
   .about-text  {
@@ -228,6 +234,7 @@ ul {
 
 
   .profile{
+    width: 100%;
     transform: translateY(15%);
   }
 
@@ -258,7 +265,7 @@ ul {
   }
 
   .profile{
-    width: auto;
+    width: 100%;
     /* transform: translate(-50%, 15%); */
   }
 
@@ -275,7 +282,10 @@ ul {
 .about-text p:nth-child(2){
   margin: 0px;
   padding: 0px; 
+  margin-bottom: 30px
 }
+
+ 
 
 #educatoin{
   width: auto;
@@ -285,4 +295,14 @@ ul {
   /* font-size: 15px; */
   line-height: 15px;
 }
+}
+
+
+
+@media screen and (max-width: 415px) {
+
+  .profile{
+    width: 100%;
+    /* transform: translate(-50%, 15%); */
+  }
 }
