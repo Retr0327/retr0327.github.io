@@ -261,7 +261,8 @@ ul {
   }
 
   .profile{
-    transform: translate(-5%, 15%);
+    width: auto;
+    /* transform: translate(-50%, 15%); */
   }
 
 .profile, .about-text {
