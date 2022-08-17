@@ -4,12 +4,12 @@ import { ActionIcon, useMantineColorScheme } from "@mantine/core";
 
 function ColorSchemeToggle() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const isDark = colorScheme === "dark";
-  const color = isDark ? "yellow" : "blue";
+  const dark = colorScheme === "dark";
 
+  const color = useMemo(() => (dark ? "yellow" : "blue"), [colorScheme]);
   const icon = useMemo(
     () =>
-      isDark ? (
+      dark ? (
         <IconSunHigh style={{ width: 18, height: 18 }} />
       ) : (
         <IconMoon style={{ width: 18, height: 18 }} />
@@ -22,6 +22,7 @@ function ColorSchemeToggle() {
       variant="outline"
       color={color}
       onClick={() => toggleColorScheme()}
+      title="Toggle color scheme"
     >
       {icon}
     </ActionIcon>
