@@ -5,8 +5,6 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: { loader: "akamai", path: "" },
-  assetPrefix: isProduction ? "/" : "",
-  basePath: isProduction ? "/" : "",
 };
 
 module.exports = nextConfig;
