@@ -3,28 +3,23 @@ import {
   MantineProvider,
   ColorSchemeProvider,
 } from "@mantine/core";
-import React from "react";
-import { useState } from "react";
-import { setCookie } from "cookies-next";
+import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 
-type DarkModeContextProps = {
-  colorScheme: ColorScheme;
+type ChildrenProps = {
   children: React.ReactNode;
 };
 
-function DarkModeContext(props: DarkModeContextProps) {
-  const [colorScheme, setColorScheme] = useState<ColorScheme>(
-    props.colorScheme
-  );
+function DarkModeContext({ children }: ChildrenProps) {
+  const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
+    key: "mantine-color-scheme",
+    defaultValue: "light",
+    getInitialValueInEffect: true,
+  });
 
-  const toggleColorScheme = (value?: ColorScheme) => {
-    const nextColorScheme =
-      value || (colorScheme === "dark" ? "light" : "dark");
-    setColorScheme(nextColorScheme);
-    setCookie("mantine-color-scheme", nextColorScheme, {
-      maxAge: 60 * 60 * 24 * 30,
-    });
-  };
+  const toggleColorScheme = (value?: ColorScheme) =>
+    setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+
+  useHotkeys([["mod+J", () => toggleColorScheme()]]);
 
   return (
     <ColorSchemeProvider
@@ -36,7 +31,7 @@ function DarkModeContext(props: DarkModeContextProps) {
         withNormalizeCSS
         withGlobalStyles
       >
-        {props.children}
+        {children}
       </MantineProvider>
     </ColorSchemeProvider>
   );
