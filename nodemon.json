@@ -1,0 +1,7 @@
+{
+  "restartable": "rs",
+  "ignore": [".git", "./node_modules", ".gitignore", ".next", "./README.md"],
+  "watch": ["./src", "./next.config.js"],
+  "ext": "ts tsx js",
+  "exec": "next dev"
+}
