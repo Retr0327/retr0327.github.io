@@ -4,7 +4,7 @@ const isProduction = process.env.NODE_ENV === "production";
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  assetPrefix: isProduction ? "/retr0327.github.io/" : "",
+  images: { loader: "akamai", path: "" },
 };
 
 module.exports = nextConfig;
