@@ -12,8 +12,8 @@ import type { NextPage } from "next";
 
 const useStyles = createStyles((theme) => ({
   root: {
-    paddingTop: 80,
-    paddingBottom: 80,
+    paddingTop: 10,
+    paddingBottom: 30,
   },
 
   label: {
@@ -63,7 +63,7 @@ const NotFoundTitle: NextPage = () => {
         align="center"
         className={classes.description}
       >
-        The page you are looking for might have been removed had its name
+        The page you are looking for might have been removedm, had its name
         changed or is temporarily unavailable.
       </Text>
       <Group position="center">
