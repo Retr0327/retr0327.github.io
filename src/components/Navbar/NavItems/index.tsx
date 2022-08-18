@@ -1,4 +1,4 @@
-import LinkItems from "./LinkItems";
+import LinkItem from "./LinkItem";
 import { LinksTypes } from "../types";
 import NestedItems from "./NestedItems";
 
@@ -9,7 +9,7 @@ function NavItems({ links }: LinksTypes) {
         if (link.links) {
           return <NestedItems key={link.label} link={link} />;
         }
-        return <LinkItems key={link.label} link={link} />;
+        return <LinkItem key={link.label} link={link} />;
       })}
     </>
   );
