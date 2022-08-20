@@ -1,12 +1,7 @@
 import type { NextPage } from "next";
-import { ColorSchemeToggle } from "@components";
 
 const About: NextPage = () => {
-  return (
-    <div>
-      <ColorSchemeToggle />
-    </div>
-  );
+  return <div>this is about page</div>;
 };
 
 export default About;
