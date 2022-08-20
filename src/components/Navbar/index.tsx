@@ -11,6 +11,9 @@ function Navbar() {
   return (
     <Header height={56} mb={120} className={classes.header}>
       <Container className={classes.inner}>
+        <div className={classes.mediaToggle}>
+          <ColorSchemeToggle />
+        </div>
         Lixing Yang
         <Menu />
         <Group spacing={30} className={classes.links}>
