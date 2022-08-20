@@ -15,7 +15,7 @@ function Menu() {
       shadow="md"
       position="bottom"
       width="100%"
-      offset={20}
+      offset={10}
       onOpen={() => setUserMenuOpened(true)}
       onClose={() => setUserMenuOpened(false)}
       classNames={classes}
