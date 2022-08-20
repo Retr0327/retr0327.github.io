@@ -20,6 +20,11 @@ const useStyles = createStyles((theme) => ({
       display: "none",
     },
   },
+  mediaToggle: {
+    [theme.fn.largerThan("sm")]: {
+      display: "none",
+    },
+  },
 }));
 
 export default useStyles;
