@@ -25,10 +25,10 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm i
-    - run: npm run build
-    - run: npm run export
+        cache: 'pnpm'
+    - run: pnpm i
+    - run: pnpm run build
+    - run: pnpm run export
     
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
