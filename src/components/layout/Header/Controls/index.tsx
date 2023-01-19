@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import dynamic from 'next/dynamic';
+import layoutConfig from '@config/layout';
 import { Group, Tooltip } from '@mantine/core';
 
 const Github = dynamic(() => import('./Icons').then((module) => module.Github));
@@ -18,8 +19,8 @@ function HeaderControls() {
           },
         })}
       >
-        <Facebook link="https://www.facebook.com/retr0327/" />
-        <Github link="https://github.com/Retr0327" tooltip="Github" />
+        <Facebook link={layoutConfig.facebook.link} />
+        <Github link={layoutConfig.github.lixing} tooltip="Github" />
         <ColorScheme />
       </Group>
     </Tooltip.Group>
