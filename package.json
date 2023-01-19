@@ -15,19 +15,15 @@
     "@mantine/hooks": "^5.1.6",
     "@mantine/next": "^5.1.6",
     "@tabler/icons": "^1.83.1",
-    "formik": "^2.2.9",
     "next": "12.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "yup": "^0.32.11"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/node": "18.7.6",
     "@types/react": "18.0.17",
-    "@types/react-dom": "18.0.6",
     "eslint": "8.22.0",
-    "eslint-config-next": "12.2.5",
-    "nodemon": "^2.0.19",
+    "husky": "^8.0.3",
     "typescript": "4.7.4"
   }
 }
