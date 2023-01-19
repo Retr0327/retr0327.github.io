@@ -1,4 +1,4 @@
-import layoutConfig from '@config/css';
+import layoutConfig from '@config/layout';
 import { createStyles } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
