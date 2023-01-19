@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import { ReactNode } from 'react';
 import Header from './Header';
-import useStyles from './Layout.styles';
+import useStyles from './NavigationLayout.styles';
 
 type Props = { children: ReactNode };
 
-function Layout(props: Props) {
+function NavigationLayout(props: Props) {
   const { children } = props;
   const { classes } = useStyles();
 
@@ -23,4 +23,4 @@ function Layout(props: Props) {
   );
 }
 
-export default Layout;
+export default NavigationLayout;
