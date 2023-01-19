@@ -3,6 +3,7 @@ import { AppPropsWithLayout } from 'types';
 import { ColorScheme } from '@mantine/core';
 import NextApp, { AppContext } from 'next/app';
 import MantineProvider from '@contexts/MantineProvider';
+import ColorSchemeToggle from '@components/common/ColorSchemeToggle';
 
 type Props = AppPropsWithLayout & { colorScheme: ColorScheme };
 
@@ -12,6 +13,7 @@ function App(props: Props) {
 
   return (
     <MantineProvider colorScheme={colorScheme}>
+      <ColorSchemeToggle />
       {getLayout(<Component {...pageProps} />)}
     </MantineProvider>
   );
