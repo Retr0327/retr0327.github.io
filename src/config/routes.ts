@@ -1,6 +1,6 @@
 const Route = {
   home: '/',
-  blog: '/blog/1',
+  blog: '/blog',
   about: '/about',
 } as const;
 
