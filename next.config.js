@@ -1,10 +1,11 @@
-const isProduction = process.env.NODE_ENV === "production";
-
 /** @type {import('next').NextConfig} */
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  images: { loader: "akamai", path: "" },
 };
 
-module.exports = nextConfig;
+module.exports = withBundleAnalyzer(nextConfig);
