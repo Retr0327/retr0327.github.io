@@ -1,3 +1,4 @@
+import Github from './Github';
 import ColorScheme from './ColorScheme';
 
-export default ColorScheme;
+export { Github, ColorScheme };
