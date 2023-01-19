@@ -9,10 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: 
-      name: production
-      url: https://retr0327.github.io/
-
     strategy:
       matrix:
         node-version: [18.x]
