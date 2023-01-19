@@ -11,7 +11,7 @@ type MenuLink = PartialBy<LinkItem, 'link'> & { icon: TablerIcon };
 
 const links: MenuLink[] = [
   { label: 'Home', link: Route.home, icon: IconHome },
-  { label: 'Blog', link: `${Route.blog}/1`, icon: IconArticle },
+  { label: 'Blog', link: Route.blog, icon: IconArticle },
   { label: 'About', link: Route.about, icon: IconUser },
 ];
 
