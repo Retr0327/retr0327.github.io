@@ -6,6 +6,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  basePath: '/retr0327.github.io',
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
