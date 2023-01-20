@@ -1,1 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[405],{9814:function(n,e,u){(window.__NEXT_P=window.__NEXT_P||[]).push(["/",function(){return u(2332)}])},2332:function(n,e,u){"use strict";u.r(e);var t=u(1527);let _=()=>(0,t.jsx)(t.Fragment,{children:"This is homepage"});e.default=_}},function(n){n.O(0,[774,888,179],function(){return n(n.s=9814)}),_N_E=n.O()}]);
