@@ -6,7 +6,9 @@ import { components } from './Components';
 import useStyles from './PostPage.styles';
 import TableOfContents from './TableOfContents';
 
-function PostPage(props: BlogPostProps) {
+type Props = Omit<BlogPostProps, 'posts'>;
+
+function PostPage(props: Props) {
   const { post, siblings } = props;
   const { classes } = useStyles();
   const { source, headings } = post;
