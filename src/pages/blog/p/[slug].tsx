@@ -1,5 +1,5 @@
 import { BlogPostProps } from 'types/blog';
-import { getPostSlug } from '@utils/mdx/path';
+import { getPosts } from '@utils/mdx/path';
 import PostPage from '@components/pages/Blog/Post';
 import createMdxElements from '@utils/mdx/elements';
 import type { NextPage, GetStaticPaths, GetStaticProps } from 'next';
@@ -30,7 +30,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const paths = getPostSlug();
+  const posts = getPosts(['slug']);
+  const paths = posts.map((filename) => ({ params: { slug: filename.slug } }));
 
   return {
     paths,
