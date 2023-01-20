@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import layoutConfig from '@config/layout';
 import IconController from '@components/common/Icons';
 import ControlBase from './Base';
 
@@ -16,10 +17,10 @@ function Facebook(props: FacebookControlProps) {
       href={link}
       sx={(theme) => ({
         color: theme.white,
-        backgroundColor: '#1778F2',
-        borderColor: '#1778F2',
+        backgroundColor: layoutConfig.facebook.color,
+        borderColor: layoutConfig.facebook.color,
         ...theme.fn.hover({
-          backgroundColor: theme.fn.lighten('#1778F2', 0.1),
+          backgroundColor: theme.fn.lighten(layoutConfig.facebook.color, 0.1),
         }),
       })}
     >
