@@ -19,9 +19,10 @@ export type BlogPostProps = {
 
 export interface Frontmatter {
   title: string;
-  date: string;
+  createdAt: string;
   slug: string;
   excerpt: string;
   category: string[];
   coverImage?: string;
+  updatedAt?: string;
 }
