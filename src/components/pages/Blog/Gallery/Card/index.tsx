@@ -30,7 +30,8 @@ function PostCard(props: Props) {
 
           <Group position="apart" className={classes.footer}>
             <Text size="sm" color="dimmed">
-              {frontMatter.date}
+              發表於 {frontMatter.createdAt}
+              {frontMatter.updatedAt !== undefined ? ` | 更新於 ${frontMatter.updatedAt}` : null}
             </Text>
 
             <Group spacing={8} mr={0}>
