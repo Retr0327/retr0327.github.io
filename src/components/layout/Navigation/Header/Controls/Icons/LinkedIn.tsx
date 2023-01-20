@@ -12,7 +12,7 @@ function LinkedIn(props: LinkedInControlProps) {
 
   return (
     <ControlBase
-      tooltip="Facebook"
+      tooltip="LinkedIn"
       component="a"
       href={link}
       sx={(theme) => ({
