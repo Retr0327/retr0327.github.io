@@ -14,6 +14,7 @@ const nextConfig = {
     '/about': { page: '/about' },
     '/blog': { page: '/blog' },
   }),
+  images: { unoptimized: true },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
