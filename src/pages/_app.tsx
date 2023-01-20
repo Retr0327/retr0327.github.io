@@ -2,7 +2,7 @@ import { getCookie } from 'cookies-next';
 import { AppPropsWithLayout } from 'types';
 import { ColorScheme } from '@mantine/core';
 import NextApp, { AppContext } from 'next/app';
-import MantineProvider from '@contexts/MantineProvider';
+import MantineProvider from '@contexts/Mantine';
 import NavigationLayout from '@components/layout/Navigation';
 
 type Props = AppPropsWithLayout & { colorScheme: ColorScheme };
