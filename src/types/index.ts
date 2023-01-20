@@ -30,7 +30,8 @@ export interface IconProps extends React.ComponentPropsWithoutRef<'svg'> {
 
 export type IconControllerProps =
   | ({ control: 'github' } & IconProps)
-  | ({ control: 'facebook' } & IconProps);
+  | ({ control: 'facebook' } & IconProps)
+  | ({ control: 'linkedin' } & IconProps);
 
 export type LinkItem = {
   link: string;
