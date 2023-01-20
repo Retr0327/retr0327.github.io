@@ -5,7 +5,9 @@ import PostCard from './Card';
 import Pagination from './Pagination';
 import useStyles from './BlogGallery.styles';
 
-function BlogGallery(props: BlogGalleryProps) {
+type Props = Omit<BlogGalleryProps, 'allPosts'>;
+
+function BlogGallery(props: Props) {
   const { posts, totalPages } = props;
   const { classes } = useStyles();
 
