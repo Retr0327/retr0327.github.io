@@ -1,6 +1,6 @@
 import { Frontmatter } from 'types/mdx';
 
-export type BlogPageProps = {
+export type BlogGalleryProps = {
   posts: { slug: string; frontMatter: Frontmatter }[];
   totalPages: number;
 };
