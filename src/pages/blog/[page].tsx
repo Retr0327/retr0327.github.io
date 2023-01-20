@@ -14,7 +14,7 @@ export default Blog;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context as { params: { page: string } };
-  const posts = getSortedPosts();
+  const posts = getSortedPosts(['frontMatter']);
   const pageIndex = Number(params.page) - 1;
   const startIndex = pageIndex * POSTS_PER_PAGE;
   const endIndex = (pageIndex + 1) * POSTS_PER_PAGE;
