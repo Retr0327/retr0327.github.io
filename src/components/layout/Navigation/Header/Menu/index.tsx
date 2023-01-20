@@ -4,7 +4,7 @@ import { LinkItem, PartialBy } from 'types';
 import { useDisclosure } from '@mantine/hooks';
 import { memo, useState, useMemo } from 'react';
 import { Burger, Menu as MantineMenu } from '@mantine/core';
-import { TablerIcon, IconHome, IconUser, IconArticle } from '@tabler/icons';
+import { TablerIcon, IconHome, IconArticle } from '@tabler/icons';
 import useStyles from './Menu.styles';
 
 type MenuLink = PartialBy<LinkItem, 'link'> & { icon: TablerIcon };
@@ -12,7 +12,6 @@ type MenuLink = PartialBy<LinkItem, 'link'> & { icon: TablerIcon };
 const links: MenuLink[] = [
   { label: 'Home', link: Route.home, icon: IconHome },
   { label: 'Blog', link: `${Route.blog}/1`, icon: IconArticle },
-  { label: 'About', link: Route.about, icon: IconUser },
 ];
 
 function Menu() {

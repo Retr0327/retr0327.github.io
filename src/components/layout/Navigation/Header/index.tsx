@@ -14,7 +14,6 @@ const Menu = dynamic(() => import('./Menu'));
 const links: LinkItem[] = [
   { label: 'Home', link: Route.home },
   { label: 'Blog', link: `${Route.blog}/1` },
-  { label: 'About', link: Route.about },
 ];
 
 function Header() {

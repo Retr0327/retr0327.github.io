@@ -11,7 +11,7 @@ const links: LinksGroupProps[] = [
         isNewTab: true,
         link: layoutConfig.cv,
       },
-      { label: 'About Me', link: Route.about },
+      { label: 'Blog', link: `${Route.blog}/1` },
     ],
   },
 
