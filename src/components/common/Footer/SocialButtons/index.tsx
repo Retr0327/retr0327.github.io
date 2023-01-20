@@ -18,7 +18,7 @@ function LinkedInButton(props: SocialButtonProps) {
         }),
         ...packSx(sx),
       ]}
-      icon={<IconController control="facebook" size={16} />}
+      icon={<IconController control="linkedin" size={16} />}
       href={layoutConfig.linkedin.link}
       {...others}
     >
