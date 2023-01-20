@@ -6,13 +6,13 @@ const useStyles = createStyles((theme) => ({
     minHeight: 'calc(100vh - 350px)',
     position: 'relative',
     zIndex: 1,
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
     boxShadow: theme.colorScheme === 'dark' ? 'none' : theme.shadows.sm,
     paddingBottom: 80,
   },
 
   wrapper: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
     zIndex: 1,
     display: 'flex',
     position: 'relative',
