@@ -5,10 +5,8 @@ export interface Frontmatter {
   date: string;
   slug: string;
   excerpt: string;
-  category?: string[];
+  category: string[];
   coverImage?: string;
-  coverImageWidth?: string;
-  coverImageHeight?: string;
 }
 
 export type MdxPageProps = {
