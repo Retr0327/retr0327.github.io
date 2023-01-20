@@ -6,8 +6,8 @@ import Route from '@config/routes';
 import { Header as MantineHeader, Group, Text } from '@mantine/core';
 import ColorSchemeToggle from '@components/common/ColorSchemeToggle';
 import NavItems from './NavItem';
+import HeaderControls from './Controls';
 import useStyles from './Header.styles';
-import HeaderControls from './Controls/Header';
 
 const Menu = dynamic(() => import('./Menu'));
 
