@@ -13,7 +13,7 @@ async function getHeadings(content: string) {
 }
 
 async function createMdxElements(params: { slug: string }) {
-  const posts = getSortedPosts();
+  const posts = getSortedPosts(['slug', 'frontMatter', 'content']);
   const postIndex = posts.findIndex(({ slug: postSlug }) => postSlug === params.slug);
   const { frontMatter, content } = posts[postIndex];
   const nextPost = posts[postIndex + 1];

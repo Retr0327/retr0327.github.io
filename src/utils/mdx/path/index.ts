@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
+type Fields = 'slug' | 'frontMatter' | 'content';
+
 const POSTS_PER_PAGE = 8;
 const POSTS_PATH = path.join(process.cwd(), 'src/posts');
 const TOTAL_POSTS = fs.readdirSync(POSTS_PATH).filter((file) => /\.mdx?$/.test(file));
@@ -10,33 +12,39 @@ function countTotalPages() {
   return Math.ceil(TOTAL_POSTS.length / POSTS_PER_PAGE);
 }
 
-function getSortedPosts() {
+function getPosts(fields: Fields[] = []) {
   const posts = TOTAL_POSTS.map((filename) => ({
     filename,
   }));
 
-  return posts
-    .map(({ filename }) => {
-      const filePath = path.join(POSTS_PATH, filename);
-      const source = fs.readFileSync(filePath);
-      const { data, content } = matter(source);
-      const slug = filename.replace('.mdx', '');
-      return { slug, frontMatter: data, content };
-    })
-    .sort(
-      (a, b) =>
-        new Date(b.frontMatter.updatedAt || b.frontMatter.createdAt).getTime() -
-        new Date(a.frontMatter.updatedAt || a.frontMatter.createdAt).getTime()
-    );
-}
+  return posts.map(({ filename }) => {
+    const filePath = path.join(POSTS_PATH, filename);
+    const source = fs.readFileSync(filePath);
+    const { data, content } = matter(source);
+    const slug = filename.replace('.mdx', '');
 
-function getPostSlug() {
-  const postsPath = fs.readdirSync(POSTS_PATH).filter((file) => /\.mdx?$/.test(file));
+    const output: { [key: string]: any } = {};
+    if (fields.includes('slug')) {
+      output.slug = slug;
+    }
+    if (fields.includes('frontMatter')) {
+      output.frontMatter = data;
+    }
+    if (fields.includes('content')) {
+      output.content = content;
+    }
 
-  return postsPath.map((filename) => {
-    const [slug] = filename.split('.');
-    return { params: { slug } };
+    return output;
   });
 }
 
-export { countTotalPages, getSortedPosts, getPostSlug, POSTS_PER_PAGE, POSTS_PATH };
+function getSortedPosts(fields: Fields[]) {
+  const posts = getPosts(fields);
+  return posts.sort(
+    (a, b) =>
+      new Date(b.frontMatter.updatedAt || b.frontMatter.createdAt).getTime() -
+      new Date(a.frontMatter.updatedAt || a.frontMatter.createdAt).getTime()
+  );
+}
+
+export { countTotalPages, getSortedPosts, getPosts, POSTS_PER_PAGE, POSTS_PATH };
