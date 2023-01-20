@@ -1,5 +1,9 @@
 const layoutConfig = {
   cv: 'https://docs.google.com/document/d/1hiYT_QK5draFMMogwfwf5H2coHcJDveS/edit?usp=share_link&ouid=115833122300012543204&rtpof=true&sd=true',
+  linkedin: {
+    color: '#0A66C2',
+    link: 'https://www.linkedin.com/in/lixing-yang-1a2037230/',
+  },
   facebook: {
     color: '#1778F2',
     link: 'https://www.facebook.com/retr0327/',
