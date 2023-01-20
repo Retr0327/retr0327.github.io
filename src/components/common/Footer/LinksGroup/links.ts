@@ -18,8 +18,9 @@ const links: LinksGroupProps[] = [
   {
     title: 'Contact',
     data: [
-      { label: 'Follow on Facebook', link: layoutConfig.facebook.link },
+      { label: 'Follow on LinkedIn', link: layoutConfig.linkedin.link },
       { label: 'Follow on Github', link: layoutConfig.github.lixing },
+      { label: 'Follow on Facebook', link: layoutConfig.facebook.link },
     ],
   },
 
