@@ -1,7 +1,7 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 export type BlogGalleryProps = {
-  posts: { slug: string; frontMatter: Frontmatter }[];
+  posts: { frontMatter: Frontmatter }[];
   totalPages: number;
 };
 
