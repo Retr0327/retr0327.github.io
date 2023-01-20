@@ -8,8 +8,8 @@ import { links } from './LinksGroup';
 import useStyles from './Footer.styles';
 
 const LinksGroup = dynamic(() => import('./LinksGroup'));
-const FacebookButton = dynamic(() =>
-  import('./SocialButtons').then((module) => module.FacebookButton)
+const LinkedInButton = dynamic(() =>
+  import('./SocialButtons').then((module) => module.LinkedInButton)
 );
 const GithubButton = dynamic(() => import('./SocialButtons').then((module) => module.GithubButton));
 
@@ -35,7 +35,7 @@ function Footer(props: Props) {
             <div className={classes.logoSection}>
               <Group>
                 <Link href={Route.home}>
-                  <Avatar src="../avatar.jpeg" radius={100} size={70} />
+                  <Avatar src={layoutConfig.avatar} radius={100} size={70} />
                 </Link>
                 <Text
                   component={Link}
@@ -62,7 +62,7 @@ function Footer(props: Props) {
                 <a href={`${layoutConfig.github.lixing}/retr0327.github.io`}>Lixing Yang</a>
               </Text>
               <div className={classes.social}>
-                <FacebookButton className={classes.socialButton} />
+                <LinkedInButton className={classes.socialButton} />
                 <GithubButton className={classes.socialButton} ml="md" />
               </div>
             </Group>

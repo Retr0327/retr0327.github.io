@@ -4,25 +4,25 @@ import IconController from '@components/common/Icons';
 import ButtonBase from './Base';
 import { SocialButtonProps } from './types';
 
-function FacebookButton(props: SocialButtonProps) {
+function LinkedInButton(props: SocialButtonProps) {
   const { sx, ...others } = props;
 
   return (
     <ButtonBase
       sx={[
         (theme) => ({
-          backgroundColor: layoutConfig.facebook.color,
+          backgroundColor: layoutConfig.linkedin.color,
           ...theme.fn.hover({
-            backgroundColor: theme.fn.lighten(layoutConfig.facebook.color, 0.1),
+            backgroundColor: theme.fn.lighten(layoutConfig.linkedin.color, 0.1),
           }),
         }),
         ...packSx(sx),
       ]}
       icon={<IconController control="facebook" size={16} />}
-      href={layoutConfig.facebook.link}
+      href={layoutConfig.linkedin.link}
       {...others}
     >
-      Follow me on Facebook
+      Follow me on LinkedIn
     </ButtonBase>
   );
 }
@@ -50,4 +50,4 @@ function GithubButton(props: SocialButtonProps) {
   );
 }
 
-export { FacebookButton, GithubButton };
+export { LinkedInButton, GithubButton };
