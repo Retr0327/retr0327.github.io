@@ -24,7 +24,9 @@ function getSortedPosts() {
       return { slug, frontMatter: data, content };
     })
     .sort(
-      (a, b) => new Date(a.frontMatter.date).getTime() - new Date(b.frontMatter.date).getTime()
+      (a, b) =>
+        new Date(b.frontMatter.updatedAt || b.frontMatter.createdAt).getTime() -
+        new Date(a.frontMatter.updatedAt || a.frontMatter.createdAt).getTime()
     );
 }
 
