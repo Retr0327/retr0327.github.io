@@ -4,6 +4,7 @@ import layoutConfig from '@config/layout';
 import { Group, Tooltip } from '@mantine/core';
 
 const Github = dynamic(() => import('./Icons').then((module) => module.Github));
+const LinkedIn = dynamic(() => import('./Icons').then((module) => module.LinkedIn));
 const Facebook = dynamic(() => import('./Icons').then((module) => module.Facebook));
 const ColorScheme = dynamic(() => import('./Icons').then((module) => module.ColorScheme));
 
@@ -19,6 +20,7 @@ function HeaderControls() {
           },
         })}
       >
+        <LinkedIn link={layoutConfig.linkedin.link} />
         <Facebook link={layoutConfig.facebook.link} />
         <Github link={layoutConfig.github.lixing} tooltip="Github" />
         <ColorScheme />
