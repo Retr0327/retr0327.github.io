@@ -9,11 +9,6 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   assetPrefix: isProduction ? 'https://retr0327.github.io/' : '/',
-  exportPathMap: () => ({
-    '/': { page: '/' },
-    '/about': { page: '/about' },
-    '/blog': { page: '/blog' },
-  }),
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
