@@ -19,9 +19,11 @@ function BlogLayout(props: Props) {
 
   return (
     <SpotlightProvider posts={posts}>
-      <Navbar />
-      <Box className={classes.content}>
-        <Box>{children}</Box>
+      <Box className={classes.wrapper}>
+        <Navbar />
+        <Box className={classes.content}>
+          <Box>{children}</Box>
+        </Box>
       </Box>
       <Footer withNavbar />
     </SpotlightProvider>
