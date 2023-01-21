@@ -7,7 +7,7 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
 
     '@media (max-width: 420px)': {
-      width: '100%',
+      width: '90%',
     },
   },
 
