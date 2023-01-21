@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { Stack } from '@mantine/core';
 import { BlogGalleryProps } from 'types/blog';
+import Pagination from '@components/common/Pagination';
 import PostCard from './Card';
-import Pagination from './Pagination';
 import useStyles from './BlogGallery.styles';
 
 type Props = Omit<BlogGalleryProps, 'allPosts'>;
