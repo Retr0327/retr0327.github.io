@@ -20,7 +20,7 @@ const Post: NextPageWithLayout<BlogPostProps> = (props) => {
 
 export default Post;
 
-Post.getLayout = function getLayout(page: ReactElement) {
+Post.getLayout = function getLayout(page: ReactElement<BlogPostProps>) {
   return (
     <SpotlightProvider posts={page.props.posts}>
       <BlogLayout posts={page.props.posts}>{page}</BlogLayout>
