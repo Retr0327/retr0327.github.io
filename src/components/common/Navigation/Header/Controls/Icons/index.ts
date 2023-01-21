@@ -1,3 +1,4 @@
+import Facebook from './Facebook';
 import ColorScheme from './ColorScheme';
 
-export default ColorScheme;
+export { Facebook, ColorScheme };
