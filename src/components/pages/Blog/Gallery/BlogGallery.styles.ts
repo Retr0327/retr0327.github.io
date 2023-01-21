@@ -3,7 +3,7 @@ import { createStyles } from '@mantine/core';
 
 const useStyles = createStyles(() => ({
   container: {
-    marginTop: 80,
+    paddingTop: 80,
     width: '100%',
     maxWidth: layoutConfig.mdx.contentWidth + layoutConfig.mdx.tableOfContentsWidth,
     marginLeft: 'auto',
