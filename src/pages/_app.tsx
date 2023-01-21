@@ -1,9 +1,9 @@
+import Head from 'next/head';
 import { getCookie } from 'cookies-next';
 import { AppPropsWithLayout } from 'types';
 import { ColorScheme } from '@mantine/core';
 import NextApp, { AppContext } from 'next/app';
 import MantineProvider from '@contexts/Mantine';
-import NavigationLayout from '@components/layout/Navigation';
 
 type Props = AppPropsWithLayout & { colorScheme: ColorScheme };
 
@@ -12,9 +12,15 @@ function App(props: Props) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
-    <MantineProvider colorScheme={colorScheme}>
-      <NavigationLayout>{getLayout(<Component {...pageProps} />)}</NavigationLayout>
-    </MantineProvider>
+    <>
+      <Head>
+        <title>Lixing Yang | Retr0327</title>
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+      </Head>
+      <MantineProvider colorScheme={colorScheme}>
+        {getLayout(<Component {...pageProps} />)}
+      </MantineProvider>
+    </>
   );
 }
 
