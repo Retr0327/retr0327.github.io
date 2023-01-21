@@ -3,7 +3,7 @@ import { createStyles } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
     zIndex: 1,
     display: 'flex',
     position: 'relative',
