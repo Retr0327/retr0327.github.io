@@ -4,12 +4,11 @@ import matter from 'gray-matter';
 
 type Fields = 'slug' | 'frontMatter' | 'content';
 
-const POSTS_PER_PAGE = 8;
 const POSTS_PATH = path.join(process.cwd(), 'src/posts');
 const TOTAL_POSTS = fs.readdirSync(POSTS_PATH).filter((file) => /\.mdx?$/.test(file));
 
-function countTotalPages() {
-  return Math.ceil(TOTAL_POSTS.length / POSTS_PER_PAGE);
+function countTotalPages(postsPerPage: number) {
+  return Math.ceil(TOTAL_POSTS.length / postsPerPage);
 }
 
 function getPosts(fields: Fields[] = []) {
@@ -47,4 +46,4 @@ function getSortedPosts(fields: Fields[]) {
   );
 }
 
-export { countTotalPages, getSortedPosts, getPosts, POSTS_PER_PAGE, POSTS_PATH };
+export { countTotalPages, getSortedPosts, getPosts, POSTS_PATH };
