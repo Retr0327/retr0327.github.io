@@ -8,6 +8,7 @@ import { Box, Menu as MantineMenu } from '@mantine/core';
 import Header from '@components/common/Navigation/Header';
 import Navbar from '@components/common/Navigation/Navbar';
 import createMenuItems from '@components/common/Navigation/Menu/Items';
+import SearchControl from '@components/common/Navigation/Navbar/Control';
 import useStyles from './BlogLayout.styles';
 import useNavigationLayoutStyles from '../NavigationLayout.styles';
 
@@ -24,7 +25,10 @@ function BlogLayout(props: Props) {
 
   return (
     <>
-      <Header links={headerLinks}>
+      <Header
+        links={headerLinks}
+        searchControl={<SearchControl onClick={spotlight.openSpotlight} />}
+      >
         <Menu
           menuItems={[
             ...menuItems,
