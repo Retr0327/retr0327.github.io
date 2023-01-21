@@ -18,6 +18,13 @@ const useStyles = createStyles((theme) => ({
     boxShadow: theme.colorScheme === 'dark' ? 'none' : theme.shadows.sm,
     paddingBottom: 80,
   },
+
+  mainLinkBadge: {
+    padding: 0,
+    width: 20,
+    height: 20,
+    pointerEvents: 'none',
+  },
 }));
 
 export default useStyles;
