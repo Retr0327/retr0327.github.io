@@ -21,12 +21,14 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
-  mainSection: {
+  section: {
     paddingRight: theme.spacing.md,
-    paddingBottom: theme.spacing.xl * 2,
-
+    paddingBottom: theme.spacing.xs * 2,
     paddingLeft: theme.spacing.md,
     paddingTop: layoutConfig.header.height + theme.spacing.md,
+    borderBottom: `1px solid ${
+      theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
+    }`,
 
     [`@media (max-width: ${layoutConfig.navbar.breakpoint}px)`]: {
       paddingBottom: 120,
