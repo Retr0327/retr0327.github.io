@@ -14,7 +14,7 @@ export default Blog;
 Blog.getLayout = function getLayout(page: ReactElement) {
   return (
     <SpotlightProvider posts={page.props.allPosts}>
-      <BlogLayout>{page}</BlogLayout>
+      <BlogLayout posts={page.props.allPosts}>{page}</BlogLayout>
     </SpotlightProvider>
   );
 };
