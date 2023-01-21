@@ -1,9 +1,11 @@
 import { Box } from '@mantine/core';
-import type { NextPage } from 'next';
+import { ReactElement } from 'react';
+import { NextPageWithLayout } from 'types';
 import Footer from '@components/common/Footer';
+import HomeLayout from '@components/layout/Home';
 import Jumbotron from '@components/pages/Home/Jumbotron';
 
-const Home: NextPage = () => (
+const Home: NextPageWithLayout = () => (
   <>
     <Box sx={{ position: 'relative', zIndex: 1 }}>
       <Jumbotron />
@@ -11,5 +13,9 @@ const Home: NextPage = () => (
     <Footer />
   </>
 );
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <HomeLayout>{page}</HomeLayout>;
+};
 
 export default Home;
