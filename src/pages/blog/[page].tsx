@@ -1,16 +1,23 @@
+import { ReactElement } from 'react';
 import { BlogGalleryProps } from 'types/blog';
 import BlogLayout from '@components/layout/Blog';
+import { NextPageWithLayout } from 'types/index';
+import SpotlightProvider from '@contexts/Spotlight';
+import { GetStaticProps, GetStaticPaths } from 'next';
 import BlogGallery from '@components/pages/Blog/Gallery';
-import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { countTotalPages, getSortedPosts, POSTS_PER_PAGE } from '@utils/mdx/path';
 
-const Blog: NextPage<BlogGalleryProps> = (props) => (
-  <BlogLayout posts={props.allPosts}>
-    <BlogGallery {...props} />
-  </BlogLayout>
-);
+const Blog: NextPageWithLayout<BlogGalleryProps> = (props) => <BlogGallery {...props} />;
 
 export default Blog;
+
+Blog.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <SpotlightProvider posts={page.props.allPosts}>
+      <BlogLayout>{page}</BlogLayout>
+    </SpotlightProvider>
+  );
+};
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context as { params: { page: string } };
