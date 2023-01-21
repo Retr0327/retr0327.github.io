@@ -9,7 +9,9 @@ import { countTotalPages, getSortedPosts } from '@utils/mdx/path';
 
 const POSTS_PER_PAGE = 8;
 
-const Blog: NextPageWithLayout<BlogGalleryProps> = (props) => <BlogGallery {...props} />;
+const Blog: NextPageWithLayout<BlogGalleryProps> = (props) => (
+  <BlogGallery posts={props.posts} totalPages={props.totalPages} />
+);
 
 export default Blog;
 
