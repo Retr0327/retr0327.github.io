@@ -5,7 +5,7 @@ import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { countTotalPages, getSortedPosts, POSTS_PER_PAGE } from '@utils/mdx/path';
 
 const Blog: NextPage<BlogGalleryProps> = (props) => (
-  <BlogLayout>
+  <BlogLayout posts={props.allPosts}>
     <BlogGallery {...props} />
   </BlogLayout>
 );
@@ -22,8 +22,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      posts: posts.slice(startIndex, endIndex),
       totalPages,
+      allPosts: posts,
+      posts: posts.slice(startIndex, endIndex),
     },
   };
 };
