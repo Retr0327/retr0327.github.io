@@ -1,6 +1,7 @@
 import { memo, ReactNode } from 'react';
 import { Frontmatter } from 'types/blog';
 import { IconSearch } from '@tabler/icons';
+import { useMediaQuery } from '@mantine/hooks';
 import { NextRouter, useRouter } from 'next/router';
 import { SpotlightProvider as MantineSpotlightProvider, SpotlightAction } from '@mantine/spotlight';
 
@@ -27,6 +28,7 @@ function SpotlightProvider(props: Props) {
   const { posts, children } = props;
   const router = useRouter();
   const actions = createActions(posts, router);
+  const smallScreen = useMediaQuery('(max-width: 485px)');
 
   return (
     <MantineSpotlightProvider
@@ -42,6 +44,7 @@ function SpotlightProvider(props: Props) {
       }}
       limit={5}
       nothingFoundMessage="Nothing found..."
+      maxWidth={smallScreen ? 350 : 600}
     >
       {children}
     </MantineSpotlightProvider>
