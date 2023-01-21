@@ -32,7 +32,7 @@ export function createBlogLinks(posts: { frontMatter: Frontmatter }[]): NavLink[
   return [
     { label: 'Tags', link: Route.tags, icon: IconTag, count: categoryCounts.size },
     { label: 'Category', link: Route.categories, icon: IconCategory, count: categoryCounts.size },
-    { label: 'Archives', link: Route.archives, icon: IconArchive, count: posts.length },
+    { label: 'Archives', link: `${Route.archives}/1`, icon: IconArchive, count: posts.length },
   ];
 }
 
