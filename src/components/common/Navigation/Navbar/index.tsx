@@ -1,9 +1,8 @@
 import { memo } from 'react';
 import { Frontmatter } from 'types/blog';
-import { IconHome } from '@tabler/icons';
 import { useSpotlight } from '@mantine/spotlight';
-import Route, { createBlogLinks } from '@config/routes';
 import { Navbar as MantineNavbar } from '@mantine/core';
+import { menuLinks, createBlogLinks } from '@config/routes';
 import NavItems from './NavItem';
 import SearchControl from './Control';
 import useStyles from './Navbar.styles';
@@ -20,7 +19,7 @@ function Navbar(props: Props) {
     <MantineNavbar className={classes.navbar}>
       <MantineNavbar.Section className={classes.section}>
         <SearchControl onClick={spotlight.openSpotlight} sx={{ width: '100%' }} mb={20} />
-        <NavItems links={[{ label: 'Home', link: Route.home, icon: IconHome }, ...links]} />
+        <NavItems links={[...menuLinks, ...links]} />
       </MantineNavbar.Section>
     </MantineNavbar>
   );
