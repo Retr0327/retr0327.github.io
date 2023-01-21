@@ -10,10 +10,11 @@ import useStyles from './Header.styles';
 type Props = {
   links: LinkItem[];
   children: ReactNode;
+  searchControl?: JSX.Element;
 };
 
 function Header(props: Props) {
-  const { links, children } = props;
+  const { links, children, searchControl } = props;
   const { classes } = useStyles();
 
   return (
@@ -30,6 +31,7 @@ function Header(props: Props) {
         <Group spacing={5} className={classes.links}>
           <NavItems links={links} />
         </Group>
+        {searchControl !== undefined ? searchControl : null}
         <HeaderControls />
         <ColorSchemeToggle />
       </Group>
