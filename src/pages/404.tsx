@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import { memo } from 'react';
+import { NextPage } from 'next';
 import Route from '@config/routes';
 import dynamic from 'next/dynamic';
 import { Button } from '@mantine/core';
+import HomeLayout from '@components/layout/Home';
 
 const ErrorPage = dynamic(() => import('@components/pages/Error'));
 
-function NotFoundTitle() {
-  return (
+const NotFoundPage: NextPage = () => (
+  <HomeLayout>
     <ErrorPage
       code={404}
       title="You have found a secret place."
@@ -18,7 +20,7 @@ function NotFoundTitle() {
         </Button>
       }
     />
-  );
-}
+  </HomeLayout>
+);
 
-export default memo(NotFoundTitle);
+export default memo(NotFoundPage);
