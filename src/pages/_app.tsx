@@ -16,6 +16,10 @@ function App(props: Props) {
       <Head>
         <title>Lixing Yang | Retr0327</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+        <meta
+          name="google-site-verification"
+          content="4sJ3St68ieXSEQ4IpKoYR6KcFtpzq75DBu1z7D5iL2Q"
+        />
       </Head>
       <MantineProvider colorScheme={colorScheme}>
         {getLayout(<Component {...pageProps} />)}
