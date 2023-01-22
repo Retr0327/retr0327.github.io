@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { Text } from '@mantine/core';
 import { Prism } from '@mantine/prism';
+import { Text, Code } from '@mantine/core';
 import MdxTitle from './Title';
 
 const h = (order: 1 | 2 | 3 | 4 | 5 | 6) => (props: any) => <MdxTitle order={order} {...props} />;
@@ -15,6 +15,7 @@ export const components = {
   h4: h(4),
   h5: h(5),
   h6: h(6),
+  code: (props: any) => <Code {...props} />,
   p: (props: any) => <p {...props} style={{ lineHeight: 1.55 }} />,
   ul: (props: any) => (
     <ul {...props} style={{ lineHeight: 1.65, marginBottom: 20, marginTop: 10 }} />
