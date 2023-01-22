@@ -1,55 +1,22 @@
-import Link from 'next/link';
-import { memo, useMemo } from 'react';
+import { memo } from 'react';
+import { BlogGalleryProps } from 'types/blog';
+import { Stack, Center } from '@mantine/core';
+import TimeLine from '@components/common/TimeLine';
 import Pagination from '@components/common/Pagination';
-import { Timeline, Text, Stack, Center } from '@mantine/core';
-import filterPosts from './utils';
 import useStyles from './ArchivesPage.styles';
-import { ArchivesPageProps, FilterPosts } from './types';
 
-function ArchivesPage(props: ArchivesPageProps) {
+type Props = Omit<BlogGalleryProps, 'allPosts'>;
+
+function ArchivesPage(props: Props) {
+  const { posts, totalPages } = props;
   const { classes } = useStyles();
-  const posts = filterPosts(props.posts) as FilterPosts;
-
-  const timelineItems = useMemo(
-    () =>
-      posts.map((post) =>
-        post.map((postItems, index) => {
-          if (typeof postItems === 'string') {
-            return (
-              <Timeline.Item
-                key={`${postItems}-${index}`}
-                title={<Text size="lg">{postItems}</Text>}
-              />
-            );
-          }
-
-          return postItems.map((postItem, postItemIndex) => (
-            <Timeline.Item
-              bulletSize={15}
-              key={`${postItem.title}-${postItemIndex}`}
-              title={
-                <Text component={Link} href={postItem.slug} size="sm">
-                  {postItem.date}{' '}
-                  <Text component="span" size="md" ml={15}>
-                    {postItem.title}
-                  </Text>
-                </Text>
-              }
-            />
-          ));
-        })
-      ),
-    [posts]
-  );
 
   return (
     <div className={classes.container}>
       <Stack spacing={60}>
-        <Timeline active={-1} lineWidth={2} p={10}>
-          {timelineItems}
-        </Timeline>
+        <TimeLine posts={posts} />
         <Center>
-          <Pagination total={props.totalPages} />
+          <Pagination total={totalPages} />
         </Center>
       </Stack>
     </div>
