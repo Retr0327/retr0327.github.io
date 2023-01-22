@@ -23,9 +23,11 @@ export const menuLinks: MenuLink[] = [
 
 export function createBlogLinks(posts: { frontMatter: Frontmatter }[]): NavLink[] {
   const categoryCounts = countCategories(posts);
+  const size = Object.keys(categoryCounts).length;
+
   return [
-    { label: 'Tags', link: Route.tags, icon: IconTag, count: categoryCounts.size },
-    { label: 'Category', link: Route.categories, icon: IconCategory, count: categoryCounts.size },
+    { label: 'Tags', link: Route.tags, icon: IconTag, count: size },
+    { label: 'Category', link: Route.categories, icon: IconCategory, count: size },
     { label: 'Archives', link: `${Route.archives}/1`, icon: IconArchive, count: posts.length },
   ];
 }
