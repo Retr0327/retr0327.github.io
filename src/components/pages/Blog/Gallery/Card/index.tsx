@@ -1,7 +1,8 @@
-import { memo } from 'react';
-import { BlogGalleryProps } from 'types/blog';
-import { Card, Stack, Image, Badge, Text, Group } from '@mantine/core';
 import Link from 'next/link';
+import { memo } from 'react';
+import Badge from '@components/common/Badge';
+import { BlogGalleryProps } from 'types/blog';
+import { Card, Stack, Image, Text, Group } from '@mantine/core';
 import useStyles from './PostCard.styles';
 
 type Props = Pick<BlogGalleryProps, 'posts'>;
@@ -31,18 +32,7 @@ function PostCard(props: Props) {
           發表於 {frontMatter.createdAt}
           {frontMatter.updatedAt !== undefined ? ` | 更新於 ${frontMatter.updatedAt}` : null}
         </Text>
-
-        <Group spacing={8} mr={0}>
-          {frontMatter.category.map((category, categoryIndex) => (
-            <Badge
-              key={`${category}-${categoryIndex}`}
-              variant="gradient"
-              gradient={{ from: 'indigo', to: 'cyan' }}
-            >
-              {category}
-            </Badge>
-          ))}
-        </Group>
+        <Badge data={frontMatter.category} />
       </Group>
     </Card>
   ));
