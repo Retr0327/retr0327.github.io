@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Prism } from '@mantine/prism';
 import { Text, Code } from '@mantine/core';
+import Table from './Table';
 import MdxTitle from './Title';
 
 const h = (order: 1 | 2 | 3 | 4 | 5 | 6) => (props: any) => <MdxTitle order={order} {...props} />;
@@ -9,6 +10,7 @@ const h = (order: 1 | 2 | 3 | 4 | 5 | 6) => (props: any) => <MdxTitle order={ord
 export const components = {
   Head,
   Image,
+  table: Table,
   h1: h(1),
   h2: h(2),
   h3: h(3),
