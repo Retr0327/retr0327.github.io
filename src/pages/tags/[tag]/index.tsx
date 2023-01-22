@@ -1,17 +1,17 @@
 import { ReactElement } from 'react';
-import { GetServerSideProps } from 'next';
 import { NextPageWithLayout } from 'types';
 import { BlogGalleryProps } from 'types/blog';
+import BlogLayout from '@components/layout/Blog';
 import { getSortedPosts } from '@utils/mdx/path';
 import SpotlightProvider from '@contexts/Spotlight';
-import BlogLayout from '@components/layout/Blog';
+import { GetStaticPaths, GetStaticProps } from 'next';
 
 type Props = {
   posts: BlogGalleryProps['posts'];
   selectedPosts: BlogGalleryProps['posts'];
 };
 
-const Tag: NextPageWithLayout<Props> = (props) => <>{props.posts.length}</>;
+const Tag: NextPageWithLayout<Props> = () => <>sd</>;
 
 Tag.getLayout = function getLayout(page: ReactElement<Props>) {
   return (
@@ -23,8 +23,8 @@ Tag.getLayout = function getLayout(page: ReactElement<Props>) {
 
 export default Tag;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { tag } = context.query as { tag: string };
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { tag } = context.params as { tag: string };
   const posts = getSortedPosts(['frontMatter']);
   const selectedPosts = posts.filter((post) => post.frontMatter.category.includes(tag));
 
@@ -35,3 +35,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
+
+export const getStaticPaths: GetStaticPaths<{ tag: string }> = async () => ({
+  paths: [],
+  fallback: 'blocking',
+});
