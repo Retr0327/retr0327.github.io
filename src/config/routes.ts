@@ -1,4 +1,5 @@
 import { Frontmatter } from 'types/blog';
+import countCategories from '@utils/mdx/category';
 import { MenuLink, NavLink, LinkItem } from 'types';
 import { IconArchive, IconHome, IconArticle, IconTag, IconCategory } from '@tabler/icons';
 
@@ -21,14 +22,7 @@ export const menuLinks: MenuLink[] = [
 ];
 
 export function createBlogLinks(posts: { frontMatter: Frontmatter }[]): NavLink[] {
-  const categoryCounts = new Map();
-
-  posts.forEach((post) => {
-    post.frontMatter.category.forEach((category) => {
-      categoryCounts.set(category, (categoryCounts.get(category) || 0) + 1);
-    });
-  });
-
+  const categoryCounts = countCategories(posts);
   return [
     { label: 'Tags', link: Route.tags, icon: IconTag, count: categoryCounts.size },
     { label: 'Category', link: Route.categories, icon: IconCategory, count: categoryCounts.size },
