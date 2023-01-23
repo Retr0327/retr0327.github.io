@@ -1,4 +1,4 @@
-import { Frontmatter } from 'types/blog';
+import { FrontMatterProps } from 'types/blog';
 import countCategories from '@utils/mdx/category';
 import { MenuLink, NavLink, LinkItem } from 'types';
 import { IconArchive, IconHome, IconArticle, IconTag, IconCategory } from '@tabler/icons';
@@ -22,7 +22,7 @@ export const menuLinks: MenuLink[] = [
   { ...blog, icon: IconArticle },
 ];
 
-export function createBlogLinks(posts: { frontMatter: Frontmatter }[]): NavLink[] {
+export function createBlogLinks(posts: FrontMatterProps[]): NavLink[] {
   const categoryCounts = countCategories(posts);
   const size = Object.keys(categoryCounts).length;
 

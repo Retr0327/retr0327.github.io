@@ -1,12 +1,12 @@
 import { memo, ReactNode } from 'react';
-import { Frontmatter } from 'types/blog';
 import { IconSearch } from '@tabler/icons';
+import { FrontMatterProps } from 'types/blog';
 import { useMediaQuery } from '@mantine/hooks';
 import { NextRouter, useRouter } from 'next/router';
 import { SpotlightProvider as MantineSpotlightProvider, SpotlightAction } from '@mantine/spotlight';
 
 type Props = {
-  posts: { frontMatter: Frontmatter }[];
+  posts: FrontMatterProps[];
   children: ReactNode;
 };
 

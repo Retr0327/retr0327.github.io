@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Frontmatter } from 'types/blog';
+import { FrontMatterProps } from 'types/blog';
 import { useSpotlight } from '@mantine/spotlight';
 import { Navbar as MantineNavbar } from '@mantine/core';
 import { menuLinks, createBlogLinks } from '@config/routes';
@@ -7,7 +7,7 @@ import NavItems from './NavItem';
 import SearchControl from './Control';
 import useStyles from './Navbar.styles';
 
-type Props = { posts: { frontMatter: Frontmatter }[] };
+type Props = { posts: FrontMatterProps[] };
 
 function Navbar(props: Props) {
   const { classes } = useStyles();
