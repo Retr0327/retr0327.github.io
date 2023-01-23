@@ -9,6 +9,7 @@ const Route = {
   tags: '/tags',
   archives: '/archives',
   categories: '/categories',
+  notFound: '/404',
 } as const;
 
 const home = { label: 'Home', link: Route.home };
