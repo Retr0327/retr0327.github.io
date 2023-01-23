@@ -34,7 +34,7 @@ function TableOfContents(props: TableOfContentsProps) {
             sx={{ paddingLeft: (heading.depth - 1) * theme.spacing.lg }}
             onClick={async (event) => {
               event.preventDefault();
-              document.querySelector(`#${slug}`)?.scrollIntoView({
+              document.querySelector(`#${CSS.escape(slug)}`)?.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start',
                 inline: 'nearest',
