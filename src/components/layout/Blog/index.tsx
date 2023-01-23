@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { memo, ReactNode } from 'react';
-import { Frontmatter } from 'types/blog';
 import { IconSearch } from '@tabler/icons';
+import { FrontMatterProps } from 'types/blog';
 import Footer from '@components/common/Footer';
 import { useSpotlight } from '@mantine/spotlight';
 import Menu from '@components/common/Navigation/Menu';
@@ -16,7 +16,7 @@ import useNavigationLayoutStyles from '../NavigationLayout.styles';
 
 type Props = {
   children: ReactNode;
-  posts: { frontMatter: Frontmatter }[];
+  posts: FrontMatterProps[];
 };
 
 function BlogLayout(props: Props) {
