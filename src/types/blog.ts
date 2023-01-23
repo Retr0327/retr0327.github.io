@@ -1,9 +1,13 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 export type BlogGalleryProps = {
-  posts: { frontMatter: Frontmatter }[];
-  allPosts: { frontMatter: Frontmatter }[];
+  posts: FrontMatterProps[];
+  allPosts: FrontMatterProps[];
   totalPages: number;
+};
+
+export type TagPageProps = Pick<BlogGalleryProps, 'posts' | 'totalPages'> & {
+  selectedPosts: FrontMatterProps[];
 };
 
 export type BlogPostProps = {
@@ -11,7 +15,7 @@ export type BlogPostProps = {
     source: MDXRemoteSerializeResult;
     headings: { depth: number; value: string }[];
   };
-  posts: { frontMatter: Frontmatter }[];
+  posts: FrontMatterProps[];
   frontMatter: Frontmatter;
   siblings: {
     next: Frontmatter | null;
@@ -28,3 +32,5 @@ export interface Frontmatter {
   coverImage?: string;
   updatedAt?: string;
 }
+
+export type FrontMatterProps = { frontMatter: Frontmatter };
