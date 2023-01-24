@@ -23,6 +23,9 @@ function TableOfContents(props: TableOfContentsProps) {
   const items = useMemo(
     () =>
       filteredHeadings.map((heading, index) => {
+        if (heading.value === '參考資料' || heading.value === 'References') {
+          return null;
+        }
         const slug = slugger.slug(heading.value);
         return (
           <Text<'a'>
