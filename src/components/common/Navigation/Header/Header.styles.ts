@@ -19,7 +19,6 @@ const useStyles = createStyles((theme) => ({
   },
 
   logo: {
-    paddingRight: 35,
     paddingLeft: theme.spacing.md,
     height: layoutConfig.header.height,
     paddingTop: 6,
