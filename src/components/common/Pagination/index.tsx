@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import Route from '@config/routes';
 import { useRouter } from 'next/router';
 import { useMediaQuery } from '@mantine/hooks';
 import { Pagination as MantinePagination, PaginationProps } from '@mantine/core';
@@ -16,6 +15,7 @@ function Pagination(props: Props) {
   const { total } = props;
   const router = useRouter();
   const size = usePaginationSize();
+  const route = router.pathname.replace(/^\/([^/]*).*$/, '$1');
 
   return (
     <MantinePagination
@@ -24,7 +24,7 @@ function Pagination(props: Props) {
       withEdges
       size={size}
       onChange={(value) => {
-        const pushURL = `${Route.blog}/${value}`;
+        const pushURL = `/${route}/${value}`;
         if (router.asPath === pushURL) return undefined;
         return router.push(pushURL);
       }}
