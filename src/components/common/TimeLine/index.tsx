@@ -27,7 +27,16 @@ function TimeLine(props: TimeLineProps) {
               title={
                 <Text component={Link} href={postItem.slug} size="sm">
                   {postItem.date}{' '}
-                  <Text component="span" size="md" ml={15}>
+                  <Text
+                    component="span"
+                    size="md"
+                    ml={15}
+                    sx={{
+                      '&:hover': {
+                        textDecoration: 'underline',
+                      },
+                    }}
+                  >
                     {postItem.title}
                   </Text>
                 </Text>
