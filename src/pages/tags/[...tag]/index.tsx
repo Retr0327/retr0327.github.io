@@ -1,6 +1,6 @@
-import Route from '@config/routes';
+// import Route from '@config/routes';
 // import { ReactElement } from 'react';
-import { TagPageProps } from 'types/blog';
+// import { TagPageProps } from 'types/blog';
 import { NextPageWithLayout } from 'types';
 // import BlogLayout from '@components/layout/Blog';
 // import TagPage from '@components/pages/Tags/Tag';
@@ -10,9 +10,9 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 
 // const POSTS_PER_PAGE = 10;
 
-const Tag: NextPageWithLayout<TagPageProps> = () => (
+const Tag: NextPageWithLayout = (props: any) => (
   // <TagPage selectedPosts={props.selectedPosts} totalPages={props.totalPages} />
-  <>s</>
+  <>{JSON.stringify(props.tag)}</>
 );
 
 // Tag.getLayout = function getLayout(page: ReactElement<TagPageProps>) {
@@ -27,10 +27,11 @@ export default Tag;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { tag } = context.params as { tag: string[] };
-  const redirect = { redirect: { permanent: false, destination: Route.notFound } };
-  const isValidRoute = tag.length === 2 && /^\d+$/.test(tag[1]);
+  // const redirect = { redirect: { permanent: false, destination: Route.notFound } };
+  // https://retr0327.github.io/tags/pnpm/1
+  // const isValidRoute = tag.length === 2 && /^\d+$/.test(tag[1]);
 
-  if (!isValidRoute) return redirect;
+  // if (!isValidRoute) return redirect;
 
   //   const [tagId, page] = tag;
   //   const posts = getSortedPosts(['frontMatter']);
@@ -44,6 +45,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
+      tag,
       //       posts,
       //       selectedPosts: selectedPosts.slice(startIndex, endIndex),
       //       totalPages,
