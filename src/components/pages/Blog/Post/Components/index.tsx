@@ -1,3 +1,4 @@
+import url from '@config';
 import Head from 'next/head';
 import NextImage from 'next/image';
 import { Prism } from '@mantine/prism';
@@ -31,9 +32,11 @@ export const components = {
   ),
   li: (props: any) => <li {...props} style={{ marginTop: 4 }} />,
   a: (props: any) => {
+    const isHTTP: string = props.href.startsWith('http') && !props.href.startsWith(url);
+    const newTabProps = isHTTP ? { target: '_blank', rel: 'noopener noreferrer' } : undefined;
     const style = { fontSize: 15 };
     return (
-      <Text style={style} component="a" variant="link" href={props.href}>
+      <Text style={style} component="a" variant="link" href={props.href} {...newTabProps}>
         {props.children}
       </Text>
     );
