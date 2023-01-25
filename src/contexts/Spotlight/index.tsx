@@ -1,4 +1,4 @@
-import { memo, ReactNode } from 'react';
+import { memo, useMemo, ReactNode } from 'react';
 import { IconSearch } from '@tabler/icons';
 import { FrontMatterProps } from 'types/blog';
 import { useMediaQuery } from '@mantine/hooks';
@@ -27,8 +27,8 @@ function createActions(
 function SpotlightProvider(props: Props) {
   const { posts, children } = props;
   const router = useRouter();
-  const actions = createActions(posts, router);
   const smallScreen = useMediaQuery('(max-width: 485px)');
+  const actions = useMemo(() => createActions(posts, router), [posts, router, router.pathname]);
 
   return (
     <MantineSpotlightProvider
