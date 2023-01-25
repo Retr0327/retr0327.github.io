@@ -9,6 +9,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   assetPrefix: isProduction ? 'https://retr0327.github.io/' : '/',
+  images: { unoptimized: true },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
