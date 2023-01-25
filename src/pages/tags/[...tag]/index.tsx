@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-export const getStaticPaths: GetStaticPaths<{ tag: string }> = async () => ({
+export const getStaticPaths: GetStaticPaths = async () => ({
   paths: [],
   fallback: 'blocking',
 });
