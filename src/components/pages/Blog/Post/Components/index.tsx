@@ -6,14 +6,16 @@ import { Text, Code } from '@mantine/core';
 import Table from './Table';
 import Image from './Image';
 import MdxTitle from './Title';
+import Blockquote from './Blockquote';
 
 const h = (order: 1 | 2 | 3 | 4 | 5 | 6) => (props: any) => <MdxTitle order={order} {...props} />;
 
 export const components = {
   Head,
   NextImage,
-  table: Table,
   img: Image,
+  table: Table,
+  blockquote: Blockquote,
   h1: h(1),
   h2: h(2),
   h3: h(3),
