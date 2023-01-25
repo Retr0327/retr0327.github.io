@@ -1,8 +1,6 @@
 import { memo } from 'react';
 import { Blockquote as MantineBlockquote } from '@mantine/core';
 
-type Props = { children: ['\n', { [key: string]: any }, '\n'] };
-
 const CITE_MATCH = /\[(.*?)\]/;
 const SQUARE_BRACKET = /\[.*?\]/;
 
@@ -11,7 +9,7 @@ function getCite(content: string) {
   return citeResult !== null && citeResult[1];
 }
 
-function Blockquote(props: Props) {
+function Blockquote(props: any) {
   const { children } = props;
   const content = children[1].props.children as string;
   const cite = getCite(content);
