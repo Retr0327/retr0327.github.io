@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useMediaQuery } from '@mantine/hooks';
 import { Pagination as MantinePagination, PaginationProps } from '@mantine/core';
 
-type Props = Pick<PaginationProps, 'total'>;
+type Props = Pick<PaginationProps, 'total'> & { onChange?: (value: number) => void };
 
 function usePaginationSize() {
   const miniScreen = useMediaQuery('(max-width: 400px)');
@@ -12,10 +12,19 @@ function usePaginationSize() {
 }
 
 function Pagination(props: Props) {
-  const { total } = props;
+  const { total, onChange } = props;
   const router = useRouter();
   const size = usePaginationSize();
-  const route = router.pathname.replace(/^\/([^/]*).*$/, '$1');
+
+  const handleChange =
+    onChange !== undefined
+      ? onChange
+      : (value: number) => {
+          const route = router.pathname.replace(/^\/([^/]*).*$/, '$1');
+          const pushURL = `/${route}/${value}`;
+          if (router.asPath === pushURL) return undefined;
+          return router.push(pushURL);
+        };
 
   return (
     <MantinePagination
@@ -23,11 +32,7 @@ function Pagination(props: Props) {
       initialPage={1}
       withEdges
       size={size}
-      onChange={(value) => {
-        const pushURL = `/${route}/${value}`;
-        if (router.asPath === pushURL) return undefined;
-        return router.push(pushURL);
-      }}
+      onChange={handleChange}
     />
   );
 }
