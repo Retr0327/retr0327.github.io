@@ -7,10 +7,6 @@ type Fields = 'slug' | 'frontMatter' | 'content';
 const POSTS_PATH = path.join(process.cwd(), 'src/posts');
 const TOTAL_POSTS = fs.readdirSync(POSTS_PATH).filter((file) => /\.mdx?$/.test(file));
 
-function countTotalPages(source: any[], postsPerPage: number) {
-  return Math.ceil(source.length / postsPerPage);
-}
-
 function getPosts(fields: Fields[] = []) {
   const posts = TOTAL_POSTS.map((filename) => ({
     filename,
@@ -46,4 +42,4 @@ function getSortedPosts(fields: Fields[]) {
   );
 }
 
-export { countTotalPages, getSortedPosts, getPosts, POSTS_PATH, TOTAL_POSTS };
+export { getSortedPosts, getPosts, POSTS_PATH, TOTAL_POSTS };
