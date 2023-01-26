@@ -10,7 +10,7 @@ const customRenderer = (tag: { value: string; count: number; rank: number }, siz
   <Text
     key={tag.value}
     component={Link}
-    href={`${Route.tags}/${tag.value}/1`}
+    href={`${Route.tags}/tag?id=${tag.value}&page=1`}
     p={3}
     size={size}
     sx={(theme) => ({
