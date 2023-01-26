@@ -1,11 +1,12 @@
 import { ReactElement } from 'react';
+import { countTotalPages } from '@utils/mdx';
 import { BlogGalleryProps } from 'types/blog';
 import { NextPageWithLayout } from 'types/index';
 import BlogLayout from '@components/layout/Blog';
 import SpotlightProvider from '@contexts/Spotlight';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import ArchivesPage from '@components/pages/Archives';
-import { countTotalPages, getSortedPosts, TOTAL_POSTS } from '@utils/mdx/path';
+import { getSortedPosts, TOTAL_POSTS } from '@utils/mdx/path';
 
 const POSTS_PER_PAGE = 10;
 
