@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { useRouter } from 'next/router';
+import { getRouteFromPathname } from '@utils';
 import { useMediaQuery } from '@mantine/hooks';
 import { Pagination as MantinePagination, PaginationProps } from '@mantine/core';
 
@@ -20,7 +21,7 @@ function Pagination(props: Props) {
     onChange !== undefined
       ? onChange
       : (value: number) => {
-          const route = router.pathname.replace(/^\/([^/]*).*$/, '$1');
+          const route = getRouteFromPathname(router.pathname);
           const pushURL = `/${route}/${value}`;
           if (router.asPath === pushURL) return undefined;
           return router.push(pushURL);
