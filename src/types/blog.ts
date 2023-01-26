@@ -6,9 +6,7 @@ export type BlogGalleryProps = {
   totalPages: number;
 };
 
-export type TagPageProps = Pick<BlogGalleryProps, 'posts' | 'totalPages'> & {
-  selectedPosts: FrontMatterProps[];
-};
+export type TagPageProps = Pick<BlogGalleryProps, 'posts'>;
 
 export type BlogPostProps = {
   post: {
