@@ -4,9 +4,10 @@ import { NextPageWithLayout } from 'types';
 import type { GetStaticProps } from 'next';
 import { getSortedPosts } from '@utils/mdx/path';
 import BlogLayout from '@components/layout/Blog';
+import TagPage from '@components/pages/Tags/Tag';
 import SpotlightProvider from '@contexts/Spotlight';
 
-const Tag: NextPageWithLayout<TagPageProps> = (props) => <>{JSON.stringify(props.posts)}</>;
+const Tag: NextPageWithLayout<TagPageProps> = (props) => <TagPage posts={props.posts} />;
 
 export default Tag;
 
