@@ -1,5 +1,5 @@
+import { countCategories } from '@utils/mdx';
 import { FrontMatterProps } from 'types/blog';
-import countCategories from '@utils/mdx/category';
 import { MenuLink, NavLink, LinkItem } from 'types';
 import { IconArchive, IconHome, IconArticle, IconTag, IconCategory } from '@tabler/icons';
 

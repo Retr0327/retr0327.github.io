@@ -1,6 +1,6 @@
 import { memo } from 'react';
+import { countCategories } from '@utils/mdx';
 import { BlogGalleryProps } from 'types/blog';
-import countCategories from '@utils/mdx/category';
 import TagCloud from './Cloud';
 import useStyles from './TagsPage.styles';
 
