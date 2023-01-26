@@ -1,5 +1,9 @@
 import { Frontmatter } from 'types/blog';
 
+function countTotalPages(source: any[], postsPerPage: number) {
+  return Math.ceil(source.length / postsPerPage);
+}
+
 function countCategories(
   posts: {
     frontMatter: Frontmatter;
@@ -13,4 +17,4 @@ function countCategories(
   }, {});
 }
 
-export default countCategories;
+export { countTotalPages, countCategories };
