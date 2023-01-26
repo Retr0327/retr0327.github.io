@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import Route from '@config/routes';
 import { memo, useMemo } from 'react';
 import { Group, Badge as MantineBadge } from '@mantine/core';
 
@@ -11,7 +13,10 @@ function Badge(props: Props) {
         <MantineBadge
           key={`${value}-${index}`}
           variant="gradient"
+          component={Link}
+          href={`${Route.tags}/tag?id=${encodeURI(value)}${encodeURI('&')}page=1`}
           gradient={{ from: 'indigo', to: 'cyan' }}
+          sx={{ cursor: 'pointer' }}
         >
           {value}
         </MantineBadge>
