@@ -1,8 +1,8 @@
 import url from '@config';
 import Head from 'next/head';
 import NextImage from 'next/image';
-import { Prism } from '@mantine/prism';
 import { Text, Code } from '@mantine/core';
+import Pre from './Pre';
 import Table from './Table';
 import Image from './Image';
 import MdxTitle from './Title';
@@ -15,6 +15,7 @@ export const components = {
   NextImage,
   img: Image,
   table: Table,
+  pre: Pre,
   blockquote: Blockquote,
   h1: h(1),
   h2: h(2),
@@ -41,17 +42,6 @@ export const components = {
       <Text style={style} component="a" variant="link" href={props.href} {...newTabProps}>
         {props.children}
       </Text>
-    );
-  },
-  pre: (props: any) => {
-    const matches = (props.children.props.className || '').match(/language-(?<lang>.*)/);
-    return (
-      <Prism
-        language={matches && matches.groups && matches.groups.lang ? matches.groups.lang : ''}
-        mb={20}
-      >
-        {props.children.props.children}
-      </Prism>
     );
   },
 };
