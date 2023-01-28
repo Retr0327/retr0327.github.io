@@ -1,6 +1,7 @@
 ---
 title: Dependency Inversion Principle & Dependency Injection
 createdAt: '2023-01-26'
+updatedAt: '2023-01-28'
 excerpt: 這篇想要記錄的是我在學 design patterns (設計模式) 的過程時，常常分不清 dependency injection 和 dependency inversion 之間的關係。因此借機寫成一個 blog，幫自己重新了解一次。
 slug: '/blog/p/dip-and-di'
 category: ['design pattern']
@@ -158,7 +159,7 @@ SOLID 中的 S (Single Responsibility)。
 
 
 ## 總結
-要了解 DIP 和 DI 是有先後順序的：
+其實 DIP 與 DI 之間的關係是有**先後順序**的：
 
 1. DIP 告訴我們依賴的對象應該是「功能」
    - **高階模組不應該依賴於低階模組，兩者都應該依賴抽象**：用 interface (介面) 或 abstract class (抽象類) 來進行隔離。
