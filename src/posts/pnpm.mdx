@@ -160,7 +160,7 @@ node_modules
 
 pnpm 為了解決扁平化和不必要的 dependencies 複製問題，引入了「內容尋址存儲（Content-addressable storage, CAS）」來管理 modules。該策略不去複製 dependencies，而是通過「硬鏈接（Hard link）[^6]」和「符號鏈接（Symbolic link）」的方式。
 
-[^6]:hard link 是指同一個檔案在不同目錄中有多個指向同一個 inode 的檔案名稱，使得多個檔案名稱都指向同一個文件內容。
+[^6]: hard link 是指同一個檔案在不同目錄中有多個指向同一個 inode 的檔案名稱，使得多個檔案名稱都指向同一個文件內容。
 
 - **Hard link (硬鏈接)：**
 
@@ -208,10 +208,10 @@ npm v3+ 和 yarn 利用「扁平化」的方式管理 `node_modules`，解決了
 
 pnpm 則是用了另一種方式，不再是複製了，而是都從全局 store 硬連接到 `node_modules/.pnpm`，然後之間通過軟鏈接來組織依賴關係。節省磁盤空間，也沒有幽靈依賴問題，安裝速度也更快。
 
-
 #### 參考資料
+
 1. [深入淺出 npm - yarn - pnpm 包管理機制](https://www.readfog.com/a/1673072431709917184)
 2. [關於依賴管理的真相— 前端包管理器探究](https://mp.weixin.qq.com/s/CYQQKvy9MaGHdpSHpBJwzw)
-3. [關於現代包管理器的深度思考——為什麼現在我更推薦pnpm 而不是npm/yarn?](https://juejin.cn/post/6932046455733485575)
+3. [關於現代包管理器的深度思考——為什麼現在我更推薦 pnpm 而不是 npm/yarn?](https://juejin.cn/post/6932046455733485575)
 4. [PNPM - Motivation](https://pnpm.io/motivation)
-5. [NPM 中的phatom 與doppelgangers 問題](https://zhuanlan.zhihu.com/p/353208988)
+5. [NPM 中的 phatom 與 doppelgangers 問題](https://zhuanlan.zhihu.com/p/353208988)

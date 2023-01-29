@@ -136,7 +136,6 @@ class UserService:
         self.db.save(email)
 ```
 
-
 在這個例子中，我們利用建構式 `__init__` 的方式，從外部傳入 `Database`
 抽象類別的實體來使用。我們再也不用為了換 database 而改變代碼，也不用因為實作細節或是方法名稱而煩惱，只要照 `Database` 使用就可以了。
 
@@ -157,8 +156,8 @@ class UserService:
 至於要傳遞哪個 instance 進來，這份工作要交給開發者或當下的情境，就讓身為控制中心的 `main()` 去決定，大家各司其職，落實
 SOLID 中的 S (Single Responsibility)。
 
-
 ## 總結
+
 其實 DIP 與 DI 之間的關係是有**先後順序**的：
 
 1. DIP 告訴我們依賴的對象應該是「功能」
@@ -167,13 +166,9 @@ SOLID 中的 S (Single Responsibility)。
 2. 為了解決介面實例化仍然會產生依賴的問題，為了解決就有了像是 dependency injection (DI) 等方法
 3. DI：藉由從「建構式傳遞」等方式，把低階模組交給高階模組使用者
 
-
-
 #### 參考資料
 
 1. [DIP vs IoC vs DI](https://lotabout.me/2018/Dependency-Inversion-Principle/)
 2. [菜雞與物件導向 (14): 依賴反轉原則](https://igouist.github.io/post/2020/12/oo-14-dependency-inversion-principle/)
 3. [依賴反向原則 (Dependency-Inversion Principle, DIP)](https://notfalse.net/1/dip)
 4. [Dependency INVERSION vs dependency INJECTION in Python](https://www.youtube.com/watch?v=2ejbLVkCndI&t=125s)
- 
- 
