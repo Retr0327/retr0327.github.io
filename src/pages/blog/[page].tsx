@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+import ScrollToTop from '@components/common/ScrollToTop';
 import { countTotalPages } from '@utils/mdx';
 import { BlogGalleryProps } from 'types/blog';
 import BlogLayout from '@components/layout/Blog';
@@ -20,6 +21,7 @@ Blog.getLayout = function getLayout(page: ReactElement<BlogGalleryProps>) {
   return (
     <SpotlightProvider posts={page.props.allPosts}>
       <BlogLayout posts={page.props.allPosts}>{page}</BlogLayout>
+      <ScrollToTop />
     </SpotlightProvider>
   );
 };
