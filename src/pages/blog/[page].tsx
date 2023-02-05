@@ -9,7 +9,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import BlogGallery from '@components/pages/Blog/Gallery';
 import { getSortedPosts, TOTAL_POSTS } from '@utils/mdx/path';
 
-const POSTS_PER_PAGE = 8;
+const POSTS_PER_PAGE = 5;
 
 const Blog: NextPageWithLayout<BlogGalleryProps> = (props) => (
   <BlogGallery posts={props.posts} totalPages={props.totalPages} />
