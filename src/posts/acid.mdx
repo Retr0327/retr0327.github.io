@@ -1,7 +1,7 @@
 ---
 title: ACID 基礎觀念
 createdAt: '2023-01-29'
-updatedAt: '2023-02-03'
+updatedAt: '2023-02-05'
 excerpt: 這篇想要紀錄的是在學關聯式資料庫（Relational Database Management System, RDDMS）或是面試中很常會碰到的專有名詞 —— ACID。
 slug: '/blog/p/acid'
 category: ['RDBMS']
@@ -56,8 +56,8 @@ COMMIT;
 
 ```sql
 CREATE TABLE user (
-id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-email TEXT NOT NULL UNIQUE
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    email TEXT NOT NULL UNIQUE
 );
 
 INSERT INTO user (email) VALUES ('1@mail.com');
@@ -111,9 +111,7 @@ Lock，也就是該 `UserA` 的帳戶被凍結一樣，其他人不能對 `UserA
 
 ### 定義
 
-只要儲存硬體沒有受損，commited transaction 的數據會**永久**保存到磁碟上。
-
-為了確保資料的持久性，postgresql 使用了 Write-Ahead Logging (WAL)[^3] 機制。這意味著在寫入數據之前，postgresql
+只要儲存硬體沒有受損，commited transaction 的數據會**永久**保存到磁碟上。為了確保資料的持久性，postgresql 使用了 Write-Ahead Logging (WAL)[^3] 機制。這意味著在寫入數據之前，postgresql
 會先將更改記錄到 WAL 檔案中，確保即使發生意外，資料仍然可以從 WAL 恢復。舉個例子，假設你有一個銀行帳戶，並且你想要從這個帳戶中存入
 $100。當你執行存款操作時，WAL 會首先將這個操作記錄到日誌文件中，然後再將 $100 加到你的帳戶中。如果在這個過程中發生了任何問題，例如系統故障或停電，那麼可以使用日誌文件來恢復帳戶的狀態。WAL
 的另一個優點是它可以實現資料庫的讀寫分離。因為 WAL 已經記錄了所有的更改，所以可以在寫入資料時讀取資料。這使得資料庫可以同時實現高效讀取和寫入。
