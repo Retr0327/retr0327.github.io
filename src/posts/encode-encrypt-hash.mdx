@@ -1,0 +1,190 @@
+---
+title: Encoding、Encryption 及 Hashing
+createdAt: '2023-02-05'
+excerpt: 很常在後端開發使用 encoding (編碼)、encryption (加密) 和 hashing (雜湊)，但卻傻傻分不清他們的關係，於是打算好好紀錄一番。
+slug: '/blog/p/encode-encrypt-hash'
+category: ['security', 'cryptography']
+coverImage: 'https://sectigostore.com/blog/wp-content/uploads/2019/09/HashingvsEncryption-lr-940x529.jpg'
+---
+
+在開發後端的時候，經常使用到 encode (編碼)、encrypt (加密) 和 hash
+(雜湊)。雖然知道大概什麼場境該使用哪個方法，但卻說不上他們之間的不同，因此想打算好好紀錄一番。
+
+## Encoding (編碼)
+
+### 目的
+
+為了保證數據可在「**不同環境**」正確的傳輸和儲存，但只要知道編碼的轉換規則，就有辦法翻譯回來，因此 encoding
+能保證安全性。
+
+### 實例
+
+1. **`encodeURI()` 和 `decodeURI()`**
+
+   為了確保 URI 可以在網路上正確傳輸[^1]，JavaScript 中的 `encodeURI()` 和 `decodeURI()`
+   會將網址中的任何字元**編碼**成符合 URL 的格式：
+
+   [^1]: 有些瀏覽器會不支援一些特殊字符或中文，某些傳輸協議（protocol）可能錯誤解讀造成錯誤。
+
+   ```javascript
+   const encoded = encodeURI('https://www.google.com/search?q=編碼');
+   console.log(encoded); // https://www.google.com/search?q=%E7%B7%A8%E7%A2%BC
+   ```
+
+   也可以用 `decodeURI()` 轉譯回來：
+
+   ```javascript
+   const encoded = encodeURI('https://www.google.com/search?q=編碼');
+   const decoded = decodeURI(encoded);
+   console.log(decoded); // https://www.google.com/search?q=編碼
+   ```
+
+2. **Base64**
+
+   指的是 **64** 個 ASCII 可印字元，由 A-Z (26 個)、a-z (26 個)、0-9 (10 格) 和 加號 `+`
+   及斜線 `/` 總共 64 個字元所組成：
+
+   | Value | Char | Value | Char | Value | Char | Value | Char |
+   | ----- | ---- | ----- | ---- | ----- | ---- | ----- | ---- |
+   | 0     | A    | 16    | Q    | 32    | g    | 48    | w    |
+   | 1     | B    | 17    | R    | 33    | h    | 49    | x    |
+   | 2     | C    | 18    | S    | 34    | i    | 50    | y    |
+   | 3     | D    | 19    | T    | 35    | j    | 51    | z    |
+   | 4     | E    | 20    | U    | 36    | k    | 52    | 0    |
+   | 5     | F    | 21    | V    | 37    | l    | 53    | 1    |
+   | 6     | G    | 22    | W    | 38    | m    | 54    | 2    |
+   | 7     | H    | 23    | X    | 39    | n    | 55    | 3    |
+   | 8     | I    | 24    | Y    | 40    | o    | 56    | 4    |
+   | 9     | J    | 25    | Z    | 41    | p    | 57    | 5    |
+   | 10    | K    | 26    | a    | 42    | q    | 58    | 6    |
+   | 11    | L    | 27    | b    | 43    | r    | 59    | 7    |
+   | 12    | M    | 28    | c    | 44    | s    | 60    | 8    |
+   | 13    | N    | 29    | d    | 45    | t    | 61    | 9    |
+   | 14    | O    | 30    | e    | 46    | u    | 62    | +    |
+   | 15    | P    | 31    | f    | 47    | v    | 63    | /    |
+
+   以 NodeJS 為例：
+
+   ```javascript
+   const base64 = Buffer.from('Hello World').toString('base64');
+   console.log(base64); // SGVsbG8gV29ybGQ=
+   ```
+
+   等號 `=` 是用來補足結尾部分不屬於 Base64 的編碼。
+
+   至於使用時機，在網站顯示圖片時，每下載一個圖片都會造成多餘的 HTTP
+   request，影響網頁顯示速度。為了解決此問題，我們可以將圖片編碼成 Base64，透過 data URI scheme[^2]
+   直接寫進 HTML 或 CSS 中。
+
+   ```html
+   <img src="data:image/png;base64,VBORw0KGgoAA..." />
+   ```
+
+   [^2]:
+       Data URI scheme 是一種將數據直接嵌入文檔的方式，而不是將數據保存在外部文件中。雖然可以減少 HTTP
+       request，但 Base64 容量會相對較大且 data URI 有字元上的限制。
+
+## Encryption (加密)
+
+### 目的
+
+為了保證數據在傳輸過程的「**安全性**」，在加密和解密必須要有「金鑰（key）」
+
+### 實例
+
+1. **對稱式加密（Symmetric Encryption）**
+
+   使用「同一把」金要來加密和解密，且加密速度較快。以 AES (Advanced Encryption Standard) 為例：
+
+   ```javascript
+   import crypto from 'crypto';
+
+   const algorithm = 'aes-256-ctr';
+   const ENC_KEY = 'bf3c199c2470cb477d907b1e0917c17b'; // set random encryption key
+   const IV = '5183666c72eec9e4'; // set random initialisation vector
+
+   function encrypt(text: string) {
+     const cipher = crypto.createCipheriv(algorithm, ENC_KEY, IV);
+     let encrypted = cipher.update(text, 'utf8', 'base64');
+     encrypted += cipher.final('base64');
+     return encrypted;
+   }
+
+   function decrypt(text: string) {
+     const decipher = crypto.createDecipheriv(algorithm, ENC_KEY, IV);
+     let decrypted = decipher.update(text, 'base64', 'utf8');
+     decrypted += decipher.final('utf8');
+     return decrypted;
+   }
+
+   const password = '123456';
+   const encryptedText = encrypt(password);
+   const decryptedText = decrypt(encryptedText);
+
+   console.log('encryptedText', encryptedText); // xG8/3oW7
+   console.log('decryptedText', decryptedText); // 123456
+   ```
+
+   但對稱式加密也是有弱點的，一旦鑰匙在傳送過程中被中間人竊取且複製，所有後續加密訊息都可被輕易破解，因此需要使用更進階的非對稱式加密。而 HTTPS
+   協定就是根據這個漏洞去做了改良的。
+
+2. **非對稱式加密（Asymmetric Encryption）**
+
+   與對稱式不一樣，非對稱使用不同的金要來加密和解密，其中最有名的就是 **RSA**。RSA 會產生一對金鑰：公開金鑰（public key）和私密金鑰（private
+   key），當數據由其中一把金鑰加密後，就需用另一把來解密。因此，可以是 public key 加密而 private key 解密，也可以是 private key 加密而
+   public key 解密，運作原理如下圖所示：
+
+   ![client-and-server-init](https://i.imgur.com/r7HNnNw.png)
+
+   一開始 client 和 server 都握有自己的 publice 和 private keys，在他們第一次連線的時候會交換各自的 publice key。假設此時
+   client 要傳送數據給 server，它會先將數據用 **server 的 public key** 來做加密：
+
+   ![client-and-server-exchange](https://i.imgur.com/taj24Im.png)
+
+   等 server 收到數據後，就會用自己的 private key 去解密。
+
+## Hashing (雜湊)
+
+### 目的
+
+為了驗證數據的「**完整性**」，hashing (雜湊) 會將不固定長度的數據，演算成固定長度的 hash value (雜湊值)
+
+### 實例
+
+在開發後端時，當我們將使用者密碼寫入 database 前，會用 [bcrypt](https://www.npmjs.com/package/bcrypt)[^3] 這個套件先將其 hash
+過一遍。其中有個參數叫 `saltOrRounds`，它是密碼學中的「加鹽（salt）」，用來增加密碼被破譯的時間成本。我們用 NodeJS 來實作看看：
+
+[^3]: bcrypt 不是 NodeJS 原生的套件，需要額外去下載。
+
+```javascript
+import bcrypt from 'bcrypt';
+
+const password = '123456';
+const hashedPassword = await bcrypt.hash(password, 10);
+console.log(hashedPassword); // $2b$10$ExvCUbQgIa0GdlHvC9XBJu/YQGyfswkRV81hhEAUr6kgpDsV2hAbS
+```
+
+如果要驗證使用者的密碼的正確性，我們可以比較 `hashedPassword` 和 `password`：
+
+```javascript
+const password = '123456';
+const hashedPassword = await bcrypt.hash(password, 10);
+const isValidPassword = await bcrypt.compare(password, hashedPassword);
+console.log(isValidPassword); // True
+```
+
+## 總結
+
+|                                           | Encoding                               | Encryption               | Hashing                  |
+| ----------------------------------------- | -------------------------------------- | ------------------------ | ------------------------ |
+| 目的                                      | 保證數據可在「**不同環境**」傳輸和儲存 | 保證數據的「**安全性**」 | 保證數據的「**完整性**」 |
+| <div style={{ width: 60 }}>可否破譯</div> | 可                                     | 可（需有密鑰）           | 不可以                   |
+
+#### 參考資料
+
+1. [一次搞懂密碼學中的三兄弟 — Encode、Encrypt 跟 Hash](https://medium.com/starbugs/what-are-encoding-encrypt-and-hashing-4b03d40e7b0c)
+2. [Encode 、 Encrypt 以及 Hash](https://lidemy5thwbc.coderbridge.io/2021/07/01/security/)
+3. [Base64 編碼是什麼？](https://matthung0807.blogspot.com/2022/06/what-is-base64-encode.html)
+4. [Day9– 前端小字典三十天【每日一字】– Base64](https://ithelp.ithome.com.tw/articles/10159038)
+5. [使用 DATA URI 將圖片以 Base64 編碼並內崁至網頁中，加速載入速度](https://blog.gtwang.org/web-development/minimizing-http-request-using-data-uri/)
+6. [基礎密碼學(對稱式與非對稱式加密技術)](https://medium.com/@RiverChan/%E5%9F%BA%E7%A4%8E%E5%AF%86%E7%A2%BC%E5%AD%B8-%E5%B0%8D%E7%A8%B1%E5%BC%8F%E8%88%87%E9%9D%9E%E5%B0%8D%E7%A8%B1%E5%BC%8F%E5%8A%A0%E5%AF%86%E6%8A%80%E8%A1%93-de25fd5fa537)
