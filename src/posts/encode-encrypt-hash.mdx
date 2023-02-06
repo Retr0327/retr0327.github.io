@@ -1,6 +1,7 @@
 ---
 title: Encoding、Encryption 及 Hashing
 createdAt: '2023-02-05'
+updatedAt: '2023-02-06'
 excerpt: 很常在後端開發使用 encoding (編碼)、encryption (加密) 和 hashing (雜湊)，但卻傻傻分不清他們的關係，於是打算好好紀錄一番。
 slug: '/blog/p/encode-encrypt-hash'
 category: ['security', 'cryptography']
@@ -130,9 +131,11 @@ coverImage: 'https://sectigostore.com/blog/wp-content/uploads/2019/09/HashingvsE
 
 2. **非對稱式加密（Asymmetric Encryption）**
 
-   與對稱式不一樣，非對稱使用不同的金要來加密和解密，其中最有名的就是 **RSA**。RSA 會產生一對金鑰：公開金鑰（public key）和私密金鑰（private
-   key），當數據由其中一把金鑰加密後，就需用另一把來解密。因此，可以是 public key 加密而 private key 解密，也可以是 private key 加密而
+   與對稱式不一樣，非對稱式加密使用不同的金要來加密和解密，其中最有名的就是 **RSA**[^3]。RSA 會產生一對金鑰：public key (公開金鑰) 和 private key
+   (私密金鑰)，當數據由其中一把金鑰加密後，就需用另一把來解密。因此，可以是 public key 加密並用 private key 解密，也可以是 private key 加密並用
    public key 解密，運作原理如下圖所示：
+
+   [^3]: RSA 的名稱是由 Ron Rivest、Adi Shamir 與 Leonard Adleman 三人的名字共同組合而成。
 
    ![client-and-server-init](https://i.imgur.com/r7HNnNw.png)
 
@@ -143,18 +146,20 @@ coverImage: 'https://sectigostore.com/blog/wp-content/uploads/2019/09/HashingvsE
 
    等 server 收到數據後，就會用自己的 private key 去解密。
 
+   我們在前面有提到，HTTPS 根據對稱式加密進行改進，也就是 HTTPS 在對稱式加密的基礎上加入非對稱式加密來避免金鑰在交換過程中被攔截。在金鑰交換完成後，數據的傳輸則使用對稱式加密。
+
 ## Hashing (雜湊)
 
 ### 目的
 
-為了驗證數據的「**完整性**」，hashing (雜湊) 會將不固定長度的數據，演算成固定長度的 hash value (雜湊值)
+為了驗證數據的「**完整性**」，hashing (雜湊) 會將不固定長度的數據，演算成固定長度的 hash value (雜湊值)。
 
 ### 實例
 
-在開發後端時，當我們將使用者密碼寫入 database 前，會用 [bcrypt](https://www.npmjs.com/package/bcrypt)[^3] 這個套件先將其 hash
+在開發後端時，當我們將使用者密碼寫入 database 前，會用 [bcrypt](https://www.npmjs.com/package/bcrypt)[^4] 這個套件先將其 hash
 過一遍。其中有個參數叫 `saltOrRounds`，它是密碼學中的「加鹽（salt）」，用來增加密碼被破譯的時間成本。我們用 NodeJS 來實作看看：
 
-[^3]: bcrypt 不是 NodeJS 原生的套件，需要額外去下載。
+[^4]: bcrypt 不是 NodeJS 原生的套件，需要額外去下載。
 
 ```javascript
 import bcrypt from 'bcrypt';
