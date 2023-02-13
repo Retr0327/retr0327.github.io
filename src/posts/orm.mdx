@@ -1,6 +1,7 @@
 ---
 title: ORM 基礎觀念
 createdAt: '2023-02-07'
+updatedAt: '2023-02-13'
 excerpt: 很常在後端開發使用 ORM (Object-Relational Mapping) 來處理 database，但卻沒有清楚為何該使用它，只知道很多人推薦，於是打算好好紀錄一番。
 slug: '/blog/p/orm'
 category: ['database']
@@ -132,10 +133,8 @@ const result = await prisma.user.findUnique({
    ```javascript
    const users = await prisma.user.findMany(); // 尚未執行 SQL 語句
 
-   for (const user of users) {
-     // 執行 SELECT * FROM users
-     const posts = await prisma.post.findMany({
-       // 執行 SELECT * FROM posts
+   for (const user of users) {    // 執行 SELECT * FROM users
+     const posts = await prisma.post.findMany({   // 執行 SELECT * FROM posts
        where: {
          userUid: user.uid, // 執行 SELECT * FROM users WHERE uid = posts.user_uid
        },
