@@ -19,23 +19,22 @@ methods 的理解一直有誤，因為我沒有把 method properties (方法屬�
 PUT 的方式去更新 database，但如果根據 idempotent 來去思考，會發現 PATCH 更適合而不是
 PUT，是因為 PUT 要求我們提供整個資源的內容，而不是部分。
 
-
 ## Method Properties (方法屬性)
+
 Method properties (方法屬性) 是指每個 HTTP verbs 的特性，像是他們的語意、安全與否、是否 idempotent (幂等) 或可不可以
 cache。這些屬性之所以重要是因為它們決定了每個 verbs 如何被使用。
 
-
-| Verb | Safe | Idempotent | Cacheable | Action | Semantics |
-| -- | --| -- | --| --| --| 
-| GET | O | O | O | 讀取 | 請求所需要的資源 |
-| HEAD | O | O | O | 讀取 | 與 GET 相同，但沒有 response body |
-| POST | X | X| O| 新增| request 帶上 payload，執行特定資源處理|
-| PATCH | X | X | X | **部分**更新 | request 帶上 payload，更新部分內容 |
-| PUT | X | O | X | **完整**更新 | request 帶上 payload，更全部分內容 | 
-| DELETE | X | O | X | 刪除| 刪除資源|
-
+| Verb   | Safe | Idempotent | Cacheable | Action       | Semantics                              |
+| ------ | ---- | ---------- | --------- | ------------ | -------------------------------------- |
+| GET    | O    | O          | O         | 讀取         | 請求所需要的資源                       |
+| HEAD   | O    | O          | O         | 讀取         | 與 GET 相同，但沒有 response body      |
+| POST   | X    | X          | O         | 新增         | request 帶上 payload，執行特定資源處理 |
+| PATCH  | X    | X          | X         | **部分**更新 | request 帶上 payload，更新部分內容     |
+| PUT    | X    | O          | X         | **完整**更新 | request 帶上 payload，更全部分內容     |
+| DELETE | X    | O          | X         | 刪除         | 刪除資源                               |
 
 ### Safe Method (安全方法)
+
 其實講的是在請求的過程中，是否有任何資源被改動。如果沒有，那就是
 safe；反之，有改動則為 unsafe：
 
@@ -51,8 +50,8 @@ https://example.com?article=2&action=delete
 
 那可能在經過 Google 的爬蟲後，整個文章都直接被刪除了。
 
-
 ### Idempotent Method (冪等方法)
+
 除了第一次，不管請求被執行了 n 次，所回傳的結果都是相同的：
 
 - idempotent：GET、HEAD、PUT、DELETE
@@ -71,12 +70,12 @@ CAP 理論的既視感)~，如果 client 端使用 non-idempotent
 - idempotent：SET Age = 31
 - non-idempotent：SET Age = Age + 1
 
-
 ### Cacheable Method (可快取方法)
+
 指的是可以被 cache 的 HTTP request methods，也就是 GET、HEAD 和 POST。
 
-
 #### 參考資料
+
 1. [真 . 淺談 RESTful API](https://github.com/TritonHo/slides/blob/master/Taipei%202015-11%20talk/RESTful%20API%20Design-tw-2.0.pdf)
 2. [HTTP Verbs: 談 POST, PUT 和 PATCH 的應用](https://ihower.tw/blog/archives/6483#comments)
 3. [HTTP 請求方法 (Request Method)](https://notfalse.net/43/http-request-method#-Method-Properties)
