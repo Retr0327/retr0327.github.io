@@ -2,6 +2,7 @@ import url from '@config';
 import Head from 'next/head';
 import NextImage from 'next/image';
 import { Text, Code } from '@mantine/core';
+import { MDXComponents } from 'types/blog';
 import Pre from './Pre';
 import Table from './Table';
 import Image from './Image';
@@ -10,7 +11,7 @@ import Blockquote from './Blockquote';
 
 const h = (order: 1 | 2 | 3 | 4 | 5 | 6) => (props: any) => <MdxTitle order={order} {...props} />;
 
-export const components = {
+export const components: MDXComponents = {
   Head,
   NextImage,
   img: Image,
