@@ -128,7 +128,7 @@ const result = await prisma.user.findUnique({
    }
    ```
 
-   假設我們今天想要將所有的使用者的文章標題和內容呈現給大家看，「最直觀」的做法如下：
+   假設我們今天想要將所有的使用者的文章標題和內容呈現給大家看，「最直觀」~同時也是我還是初學者犯過的錯~的做法如下：
 
    ```javascript
    const users = await prisma.user.findMany(); // 尚未執行 SQL 語句
