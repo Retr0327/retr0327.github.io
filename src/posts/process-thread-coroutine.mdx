@@ -1,6 +1,7 @@
 ---
 title: 嘗試理解 Process (進程)、Thread (線程) 和 Coroutine (協程)
 createdAt: '2023-02-14'
+updatedAt: '2023-02-15'
 excerpt: 在 Python 中我很喜歡用 asyncio 來加快效能，但學得越深就發現除了 asyncio 以外，還有其他如 process、thread 等專業知識是我沒有好好深入了解的，因此想說來好好記錄一番。
 slug: '/blog/p/process-thread-coroutine'
 category: ['OS']
@@ -58,7 +59,9 @@ CPU 的情況。
 
 作為一種「輕量級」[^3]的線程，一個 thread 可以存在多個 coroutines，而 coroutine 也會有自己的 registers、context、stack
 等等。與 process 和 thread 不同，coroutine 的調度由「**用戶**」而非 CPU 進行，並且只能進行「非搶佔式」的調度。「非搶佔式調度」是指當一個 coroutine 被 block 住時，將不會影響其他 coroutines 的執行，因此不用像 thread 或 process 要進行搶佔式調度，而是由開發者去控制
-coroutine 的切換。如此一來，資源就可以有效地被利用，以達到 concurrency 的概念（因為在同一個 CPU）。以 Python 的 asyncio 為例：
+coroutine 的切換。如此一來，資源就可以有效地被利用，以達到 concurrency 的概念（因為在同一個 CPU）。
+
+我們以 Python 的 asyncio 為例：
 
 ```python
 import asyncio
@@ -92,7 +95,7 @@ asyncio.run(main())
 ```
 
 當 `coroutine_1` 執行 `await asyncio.sleep(3)` 的時候，它會主動放棄 CPU，等待 3 秒鐘後再繼續執行。在這段時間內，CPU
-可以被切換到執行 `coroutine_2`。當 `coroutine_2` 執行 `await asyncio.sleep(1)` 時，它也會主動放棄
+被切換到執行 `coroutine_2`。當 `coroutine_2` 執行 `await asyncio.sleep(1)` 時，它也會主動放棄
 CPU，等待 1 秒鐘後再繼續執行。這時 Python 會回到 `coroutine_1` 看它是否已經睡完 3 秒，由於 `coroutine_1` 還沒有睡完
 3 秒，所以 Python 又會切換到執行 `coroutine_2`，直到 `coroutine_2` 完成後再回到 `coroutine_1`。當 `coroutine_1`
 睡完 3 秒後，Python 會再次切換到 `coroutine_1`，讓它繼續執行，最後再印出 `"coroutine 1 finished"`。
@@ -103,13 +106,13 @@ CPU，等待 1 秒鐘後再繼續執行。這時 Python 會回到 `coroutine_1` 
 
 ## 總結
 
-|                            | Process   | Thread    | Coroutine  |
-| -------------------------- | --------- | --------- | ---------- |
-| Resource Utilization       | heavy     | light     | lightest   |
-| Scheduling                 | OS-driven | OS-driven | ser-driven |
-| Context Switching Overhead | high      | low       | lower      |
-| Address Space              | separate  | shared    | shared     |
-| Stack Size                 | large     | small     | smaller    |
+|                            | Process   | Thread    | Coroutine   |
+| -------------------------- | --------- | --------- | ----------- |
+| Resource Utilization       | heavy     | light     | lightest    |
+| Scheduling                 | OS-driven | OS-driven | user-driven |
+| Context Switching Overhead | high      | low       | lower       |
+| Address Space              | separate  | shared    | shared      |
+| Stack Size                 | large     | small     | smaller     |
 
 #### 參考資料
 
