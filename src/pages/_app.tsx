@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import Head from 'next/head';
 import { getCookie } from 'cookies-next';
 import { AppPropsWithLayout } from 'types';
@@ -16,11 +17,17 @@ function App(props: Props) {
       <Head>
         <title>Lixing Yang | Retr0327</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        <meta
-          name="google-site-verification"
-          content="4sJ3St68ieXSEQ4IpKoYR6KcFtpzq75DBu1z7D5iL2Q"
-        />
       </Head>
+      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-SF3HJM8QQL" />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-SF3HJM8QQL');
+        `}
+      </Script>
       <MantineProvider colorScheme={colorScheme}>
         {getLayout(<Component {...pageProps} />)}
       </MantineProvider>
