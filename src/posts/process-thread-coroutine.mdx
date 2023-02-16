@@ -1,11 +1,11 @@
 ---
 title: 嘗試理解 Process (進程)、Thread (線程) 和 Coroutine (協程)
 createdAt: '2023-02-14'
-updatedAt: '2023-02-15'
+updatedAt: '2023-02-16'
 excerpt: 在 Python 中我很喜歡用 asyncio 來加快效能，但學得越深就發現除了 asyncio 以外，還有其他如 process、thread 等專業知識是我沒有好好深入了解的，因此想說來好好記錄一番。
 slug: '/blog/p/process-thread-coroutine'
 category: ['OS']
-coverImage: 'https://cdn.educba.com/academy/wp-content/uploads/2020/01/Process-vs-Thread.jpg.webp'
+coverImage: 'https://miro.medium.com/v2/resize:fit:1400/format:webp/0*pZtUEVEgktTP4LPE.png'
 ---
 
 網路上有一張圖就可以讓我們快速明白他們之間的差別：
@@ -29,7 +29,9 @@ CPU 資源給該 program/application。當我們打開 mac 的 Activity Monitor 
    - 每個 process 都擁有獨立的系統資源，且不容易相互影響
    - 因為獨立，所以不用作 locking 機制
 
-2. 缺點：建立和 context switching (上下文交換) [^2]的 overhead 較大，因為涉及到 OS 資源的切換
+2. 缺點：
+   - 每建立一個 process，OS 都要 allocate 資源給它
+   - 如果 processes 之間要溝通，建立 context switching (上下文交換) [^2]的 overhead 較大，因為涉及到 OS 資源的切換
 
 [^2]:
     Context switching (上下文交換) 是指在執行多個 tasks 時，切換不同 tasks 的狀態信息。當 CPU 需要切換到另一個 task
