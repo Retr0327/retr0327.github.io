@@ -1,6 +1,6 @@
 function getActiveElement(rects: DOMRect[]) {
-  if (rects.length === 0) {
-    return -1;
+  if (rects.every((value) => Number(value) === 1)) {
+    return 0;
   }
 
   const closest = rects.reduce(
