@@ -1,6 +1,7 @@
 import Slugger from 'github-slugger';
 import { IconList } from '@tabler/icons';
 import { BlogPostProps } from 'types/blog';
+import { useWindowScroll } from '@mantine/hooks';
 import { Text, ScrollArea, useMantineTheme } from '@mantine/core';
 import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import useStyles from './TableOfContents.styles';
@@ -18,28 +19,25 @@ function TableOfContents(props: TableOfContentsProps) {
   const [active, setActive] = useState(0);
   const filteredHeadings = headings.filter((heading) => heading.depth > 1);
   const slugs = useRef<HTMLDivElement[]>([]);
+  const [scroll] = useWindowScroll();
 
   useEffect(() => {
     slugger.reset();
     slugs.current = filteredHeadings.map(
       (heading) => document.getElementById(slugger.slug(heading.value)) as HTMLDivElement
     );
-  }, [headings, filteredHeadings]);
+  }, [headings, filteredHeadings, scroll.y]);
 
   const handleScroll = () => {
-    setTimeout(() => {
-      setActive(getActiveElement(slugs.current.map((d) => d?.getBoundingClientRect() || 1)));
-    }, 20);
+    setActive(getActiveElement(slugs.current.map((d) => d?.getBoundingClientRect() || 1)));
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      setActive(getActiveElement(slugs.current.map((d) => d?.getBoundingClientRect() || 1)));
-    }, 20);
+    setActive(getActiveElement(slugs.current.map((d) => d?.getBoundingClientRect() || 1)));
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [slugger, slugs.current, active, headings, filteredHeadings]);
+  }, [slugger, slugs.current, active, headings, filteredHeadings, scroll.y]);
 
   if (filteredHeadings.length === 0) {
     return null;
