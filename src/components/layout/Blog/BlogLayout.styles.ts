@@ -2,6 +2,21 @@ import layoutConfig from '@config/layout';
 import { createStyles } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
+  main: {
+    scrollMarginTop: layoutConfig.header.height,
+    flex: 1,
+    paddingTop: layoutConfig.header.height - theme.spacing.xl - 2,
+
+    [`@media (max-width: ${layoutConfig.navbar.breakpoint}px)`]: {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+  },
+
+  container: {
+    minHeight: 'calc(100vh - 280px)',
+  },
+
   wrapper: {
     paddingLeft: layoutConfig.navbar.width,
 
