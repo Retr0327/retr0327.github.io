@@ -3,7 +3,7 @@ import { headerLinks } from '@config/routes';
 import Menu from '@components/common/Navigation/Menu';
 import Header from '@components/common/Navigation/Header';
 import createMenuItems from '@components/common/Navigation/Menu/Items';
-import useStyles from '../NavigationLayout.styles';
+import useStyles from './Home.styles';
 
 type Props = { children: ReactNode };
 
