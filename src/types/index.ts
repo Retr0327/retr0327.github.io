@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
+import { ReactElement } from 'react';
 import type { AppProps } from 'next/app';
 import { TablerIcon } from '@tabler/icons';
-import { ReactElement, ReactNode } from 'react';
 
 // -------- helpers --------
 
@@ -15,12 +15,14 @@ export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
 // -------- NextJs --------
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  getLayout?: (page: ReactElement) => ReactNode;
+export type PageControl<T = {}> = {
+  Layout?: (props: { children?: ReactElement<T> }) => JSX.Element;
 };
 
-export type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
+export type NextPageWithControl<P = {}, IP = P> = NextPage<P, IP> & { control?: PageControl<P> };
+
+export type AppPropsWithControl<T = any> = AppProps & {
+  Component: NextPageWithControl<T>;
 };
 
 // ---- miscellaneous ----
