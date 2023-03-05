@@ -1,23 +1,22 @@
-import { ReactElement } from 'react';
 import { TagPageProps } from 'types/blog';
-import { NextPageWithLayout } from 'types';
 import type { GetStaticProps } from 'next';
+import { NextPageWithControl } from 'types';
 import { getSortedPosts } from '@utils/mdx/path';
 import BlogLayout from '@components/layout/Blog';
 import TagPage from '@components/pages/Tags/Tag';
 import SpotlightProvider from '@contexts/Spotlight';
 
-const Tag: NextPageWithLayout<TagPageProps> = (props) => <TagPage posts={props.posts} />;
+const Tag: NextPageWithControl<TagPageProps> = (props) => <TagPage posts={props.posts} />;
+
+Tag.control = {
+  Layout: (props) => (
+    <SpotlightProvider posts={props.children!.props.posts}>
+      <BlogLayout posts={props.children!.props.posts}>{props.children}</BlogLayout>
+    </SpotlightProvider>
+  ),
+};
 
 export default Tag;
-
-Tag.getLayout = function getLayout(page: ReactElement<TagPageProps>) {
-  return (
-    <SpotlightProvider posts={page.props.posts}>
-      <BlogLayout posts={page.props.posts}>{page}</BlogLayout>
-    </SpotlightProvider>
-  );
-};
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {

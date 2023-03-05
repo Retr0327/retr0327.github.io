@@ -1,30 +1,29 @@
-import { ReactElement } from 'react';
-import ScrollToTop from '@components/common/ScrollToTop';
+import { NextPageWithControl } from 'types';
 import { countTotalPages } from '@utils/mdx';
 import { BlogGalleryProps } from 'types/blog';
 import BlogLayout from '@components/layout/Blog';
-import { NextPageWithLayout } from 'types/index';
 import SpotlightProvider from '@contexts/Spotlight';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import ScrollToTop from '@components/common/ScrollToTop';
 import BlogGallery from '@components/pages/Blog/Gallery';
 import { getSortedPosts, TOTAL_POSTS } from '@utils/mdx/path';
 
 const POSTS_PER_PAGE = 5;
 
-const Blog: NextPageWithLayout<BlogGalleryProps> = (props) => (
+const Blog: NextPageWithControl<BlogGalleryProps> = (props) => (
   <BlogGallery posts={props.posts} totalPages={props.totalPages} />
 );
 
-export default Blog;
-
-Blog.getLayout = function getLayout(page: ReactElement<BlogGalleryProps>) {
-  return (
-    <SpotlightProvider posts={page.props.allPosts}>
-      <BlogLayout posts={page.props.allPosts}>{page}</BlogLayout>
+Blog.control = {
+  Layout: (props) => (
+    <SpotlightProvider posts={props.children!.props.allPosts}>
+      <BlogLayout posts={props.children!.props.allPosts}>{props.children}</BlogLayout>
       <ScrollToTop />
     </SpotlightProvider>
-  );
+  ),
 };
+
+export default Blog;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context as { params: { page: string } };

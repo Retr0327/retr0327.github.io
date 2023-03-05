@@ -1,6 +1,5 @@
-import { ReactElement } from 'react';
 import { BlogPostProps } from 'types/blog';
-import { NextPageWithLayout } from 'types/index';
+import { NextPageWithControl } from 'types';
 import BlogLayout from '@components/layout/Blog';
 import PostPage from '@components/pages/Blog/Post';
 import SpotlightProvider from '@contexts/Spotlight';
@@ -8,7 +7,7 @@ import createMdxElements from '@utils/mdx/elements';
 import { getPosts, getSortedPosts } from '@utils/mdx/path';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 
-const Post: NextPageWithLayout<BlogPostProps> = (props) => {
+const Post: NextPageWithControl<BlogPostProps> = (props) => {
   const { post, frontMatter, siblings } = props;
 
   return (
@@ -18,15 +17,15 @@ const Post: NextPageWithLayout<BlogPostProps> = (props) => {
   );
 };
 
-export default Post;
-
-Post.getLayout = function getLayout(page: ReactElement<BlogPostProps>) {
-  return (
-    <SpotlightProvider posts={page.props.posts}>
-      <BlogLayout posts={page.props.posts}>{page}</BlogLayout>
+Post.control = {
+  Layout: (props) => (
+    <SpotlightProvider posts={props.children!.props.posts}>
+      <BlogLayout posts={props.children!.props.posts}>{props.children}</BlogLayout>
     </SpotlightProvider>
-  );
+  ),
 };
+
+export default Post;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context as { params: { slug: string } };
