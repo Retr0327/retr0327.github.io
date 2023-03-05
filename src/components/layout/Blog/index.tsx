@@ -12,7 +12,6 @@ import createMenuItems from '@components/common/Navigation/Menu/Items';
 import SearchControl from '@components/common/Navigation/Navbar/Control';
 import { ActionIcon, Badge, Box, Menu as MantineMenu } from '@mantine/core';
 import useStyles from './BlogLayout.styles';
-import useNavigationLayoutStyles from '../NavigationLayout.styles';
 
 type Props = {
   children: ReactNode;
@@ -24,7 +23,6 @@ function BlogLayout(props: Props) {
   const { classes } = useStyles();
   const menuItems = createMenuItems();
   const spotlight = useSpotlight();
-  const { classes: navigatoinClasses } = useNavigationLayoutStyles();
   const blogLinks = createBlogLinks(posts);
 
   return (
@@ -69,8 +67,8 @@ function BlogLayout(props: Props) {
         />
       </Header>
       <Navbar posts={posts} />
-      <main className={navigatoinClasses.main}>
-        <div className={navigatoinClasses.content}>
+      <main className={classes.main}>
+        <div className={classes.container}>
           <Box className={classes.wrapper}>
             <Box className={classes.content}>{children}</Box>
           </Box>
