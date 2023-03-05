@@ -8,14 +8,6 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
-  withNavbar: {
-    paddingLeft: layoutConfig.navbar.width,
-
-    [`@media (max-width: ${layoutConfig.navbar.breakpoint}px)`]: {
-      paddingLeft: 0,
-    },
-  },
-
   main: {
     scrollMarginTop: layoutConfig.header.height,
     flex: 1,
