@@ -5,7 +5,7 @@ const BREAKPOINT = '@media (max-width: 960px)';
 const useStyles = createStyles((theme) => ({
   inner: {
     position: 'relative',
-    paddingTop: 100,
+    paddingTop: 130,
     paddingBottom: 300,
 
     [BREAKPOINT]: {
