@@ -1,8 +1,9 @@
 import { memo } from 'react';
 import { BlogPostProps } from 'types/blog';
 import { MDXRemote } from 'next-mdx-remote';
-import MdxSiblings from './MdxSiblings';
+import Comments from './Comments';
 import MdxHeader from './MdxHeader';
+import MdxSiblings from './MdxSiblings';
 import { components } from './Components';
 import useStyles from './PostPage.styles';
 import TableOfContents from './TableOfContents';
@@ -19,6 +20,7 @@ function PostPage(props: Props) {
       <div className={classes.container}>
         <MdxHeader frontMatter={frontMatter} />
         <MDXRemote {...source} components={components} lazy />
+        <Comments />
         <MdxSiblings siblings={siblings} />
       </div>
 
