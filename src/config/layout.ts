@@ -18,6 +18,17 @@ const layoutConfig = {
       socialMedia: 'https://github.com/Taiwan-Social-Media-Corpus',
     },
   },
+  experiences: [
+    {
+      title: 'Backend Engineer',
+      image:
+        'https://lh3.googleusercontent.com/a-/ACB-R5Q3ydtUuw9m4ABDeIUJk0zn0MWVQqKmr7UqsPEE=s40-p',
+      company: 'TrapaSecurity',
+      url: 'https://trapasecurity.com/',
+      start: 'Apr 2023',
+      end: null,
+    },
+  ],
   mdx: {
     breakpoint: 1080,
     contentWidth: 820,
