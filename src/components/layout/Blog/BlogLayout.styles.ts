@@ -1,37 +1,37 @@
 import layoutConfig from '@config/layout';
-import { createStyles } from '@mantine/core';
+import { createStyles, rem, em } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   main: {
-    scrollMarginTop: layoutConfig.header.height,
+    scrollMarginTop: rem(layoutConfig.header.height),
     flex: 1,
-    paddingTop: layoutConfig.header.height - theme.spacing.xl - 2,
+    paddingTop: `calc(${rem(layoutConfig.header.height)} - ${theme.spacing.xl} - ${rem(2)})`,
 
-    [`@media (max-width: ${layoutConfig.navbar.breakpoint}px)`]: {
+    [`@media (max-width: ${em(layoutConfig.navbar.breakpoint)})`]: {
       paddingLeft: 0,
       paddingRight: 0,
     },
   },
 
   container: {
-    minHeight: 'calc(100vh - 280px)',
+    minHeight: `calc(100vh - ${rem(280)})`,
   },
 
   wrapper: {
-    paddingLeft: layoutConfig.navbar.width,
+    paddingLeft: rem(layoutConfig.navbar.width),
 
-    [`@media (max-width: ${layoutConfig.navbar.breakpoint}px)`]: {
+    [`@media (max-width: ${em(layoutConfig.navbar.breakpoint)})`]: {
       paddingLeft: 0,
     },
   },
 
   content: {
-    minHeight: 'calc(100vh - 350px)',
+    minHeight: `calc(100vh - ${rem(350)})`,
     position: 'relative',
     zIndex: 1,
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
     boxShadow: theme.colorScheme === 'dark' ? 'none' : theme.shadows.sm,
-    paddingBottom: 80,
+    paddingBottom: rem(80),
   },
 
   mainLinkBadge: {

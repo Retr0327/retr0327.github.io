@@ -1,10 +1,10 @@
-import { createStyles } from '@mantine/core';
+import { createStyles, rem } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   link: {
     display: 'block',
     lineHeight: 1,
-    padding: '8px 12px',
+    padding: `${rem(8)} ${rem(12)}`,
     borderRadius: theme.radius.lg,
     textDecoration: 'none',
     color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
@@ -27,7 +27,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   linkLabel: {
-    marginRight: 5,
+    marginRight: rem(5),
   },
 }));
 

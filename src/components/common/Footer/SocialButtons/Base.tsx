@@ -1,4 +1,4 @@
-import { Button } from '@mantine/core';
+import { rem, Button } from '@mantine/core';
 import { SocialButtonProps } from './types';
 
 function ButtonBase(props: SocialButtonProps) {
@@ -12,10 +12,10 @@ function ButtonBase(props: SocialButtonProps) {
       leftIcon={icon}
       styles={(theme) => ({
         root: {
-          border: 0,
-          height: 42,
-          paddingLeft: 20,
-          paddingRight: 20,
+          border: rem(0),
+          height: rem(42),
+          paddingLeft: rem(20),
+          paddingRight: rem(20),
         },
         leftIcon: {
           marginRight: theme.spacing.md,

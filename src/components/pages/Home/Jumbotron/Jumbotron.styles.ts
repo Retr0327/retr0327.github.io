@@ -1,27 +1,27 @@
-import { createStyles } from '@mantine/core';
+import { createStyles, rem, em } from '@mantine/core';
 
-const BREAKPOINT = '@media (max-width: 960px)';
+const BREAKPOINT = `@media (max-width: ${em(960)})`;
 
 const useStyles = createStyles((theme) => ({
   inner: {
     position: 'relative',
-    paddingTop: 130,
-    paddingBottom: 300,
+    paddingTop: rem(130),
+    paddingBottom: rem(300),
 
     [BREAKPOINT]: {
-      paddingTop: 50,
-      paddingBottom: 100,
+      paddingTop: rem(50),
+      paddingBottom: rem(100),
     },
   },
 
   wrapper: {
-    padding: `${theme.spacing.xl * 2}px ${theme.spacing.xl}px`,
+    padding: `calc(${theme.spacing.xl} * 2) ${rem(theme.spacing.xl)}`,
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
   },
 
   title: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontSize: 36,
+    fontSize: rem(36),
     fontWeight: 900,
     lineHeight: 1.1,
     marginBottom: theme.spacing.md,
@@ -30,7 +30,7 @@ const useStyles = createStyles((theme) => ({
 
   subTitle: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontSize: 25,
+    fontSize: rem(25),
     fontWeight: 700,
     lineHeight: 1.1,
     marginBottom: theme.spacing.md,

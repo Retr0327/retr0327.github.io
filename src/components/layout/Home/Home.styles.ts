@@ -1,5 +1,5 @@
 import layoutConfig from '@config/layout';
-import { createStyles } from '@mantine/core';
+import { createStyles, rem, em } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   '@global': {
@@ -9,18 +9,18 @@ const useStyles = createStyles((theme) => ({
   },
 
   main: {
-    scrollMarginTop: layoutConfig.header.height,
+    scrollMarginTop: rem(layoutConfig.header.height),
     flex: 1,
-    paddingTop: layoutConfig.header.height - theme.spacing.xl - 2,
+    paddingTop: `calc(${rem(layoutConfig.header.height)} - ${theme.spacing.xl} - ${rem(2)})`,
 
-    [`@media (max-width: ${layoutConfig.navbar.breakpoint}px)`]: {
+    [`@media (max-width: ${em(layoutConfig.navbar.breakpoint)})`]: {
       paddingLeft: 0,
       paddingRight: 0,
     },
   },
 
   content: {
-    minHeight: 'calc(100vh - 280px)',
+    minHeight: `calc(100vh - ${rem(280)})`,
   },
 }));
 

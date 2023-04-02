@@ -1,8 +1,9 @@
-import { createStyles } from '@mantine/core';
+import { createStyles, rem } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   burger: {
-    marginRight: theme.spacing.md,
+    marginRight: rem(theme.spacing.md),
+
     [theme.fn.largerThan('sm')]: {
       display: 'none',
     },

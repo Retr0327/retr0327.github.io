@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles, rem, em } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   title: {
@@ -6,12 +6,12 @@ const useStyles = createStyles((theme) => ({
     position: 'relative',
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     fontWeight: 900,
-    fontSize: 42,
+    fontSize: rem(42),
     lineHeight: 1.1,
     margin: 0,
     padding: 0,
     textAlign: 'left',
-    marginBottom: theme.spacing.xl * 2,
+    marginBottom: `calc(${theme.spacing.xl} * 2)`,
     letterSpacing: 1,
     textTransform: 'uppercase',
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
@@ -23,12 +23,12 @@ const useStyles = createStyles((theme) => ({
     '&::before, &::after': {
       content: '""',
       position: 'absolute',
-      width: 10,
-      height: 10,
+      width: rem(10),
+      height: rem(10),
     },
 
-    '@media (max-width: 600px)': {
-      fontSize: 28,
+    [`@media (max-width: ${em(600)})`]: {
+      fontSize: rem(28),
       marginLeft: 0,
 
       '&::before, &::after': {

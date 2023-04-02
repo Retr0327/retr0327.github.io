@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import Link from 'next/link';
-import { Title, Text } from '@mantine/core';
+import { rem, Title, Text } from '@mantine/core';
 import useStyles from './Title.styles';
 
 function MdxTitle(props: React.ComponentPropsWithoutRef<typeof Title>) {
@@ -9,7 +9,7 @@ function MdxTitle(props: React.ComponentPropsWithoutRef<typeof Title>) {
 
   if (order === 1) {
     return (
-      <Title className={classes.title} sx={{ fontWeight: 900, fontSize: 44 }}>
+      <Title className={classes.title} sx={{ fontWeight: 900, fontSize: rem(44) }}>
         {children}
       </Title>
     );

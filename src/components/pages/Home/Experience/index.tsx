@@ -2,11 +2,11 @@ import { useMemo } from 'react';
 import Link from 'next/link';
 import layoutConfig from '@config/layout';
 import { useMediaQuery } from '@mantine/hooks';
-import { Space, Text, Avatar, Timeline } from '@mantine/core';
+import { em, Space, Text, Avatar, Timeline } from '@mantine/core';
 import PageSection from '../Base';
 
 function Experience() {
-  const smallScreen = useMediaQuery('(max-width: 485px)');
+  const smallScreen = useMediaQuery(`(max-width: ${em(485)})`);
   const timelineItems = useMemo(
     () =>
       layoutConfig.experiences.map((experience, index) => (

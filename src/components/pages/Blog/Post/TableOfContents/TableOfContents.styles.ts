@@ -1,5 +1,5 @@
 import layoutConfig from '@config/layout';
-import { createStyles } from '@mantine/core';
+import { createStyles, rem, em } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -8,17 +8,17 @@ const useStyles = createStyles((theme) => ({
     position: 'sticky',
     top: theme.spacing.xl,
     right: 0,
-    paddingTop: 55,
-    flex: `0 0 ${layoutConfig.mdx.tableOfContentsWidth - 20}px`,
+    paddingTop: rem(55),
+    flex: `0 0 ${rem(layoutConfig.mdx.tableOfContentsWidth - 20)}`,
 
-    [`@media (max-width: ${layoutConfig.mdx.breakpoint}px)`]: {
+    [`@media (max-width: ${em(layoutConfig.mdx.breakpoint)})`]: {
       display: 'none',
     },
   },
 
   withTabs: {
     paddingTop: 0,
-    top: 60 + theme.spacing.xl,
+    top: `calc(${rem(60)} + ${theme.spacing.xl})`,
   },
 
   inner: {
@@ -31,7 +31,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   items: {
-    borderLeft: `1px solid ${
+    borderLeft: `${rem(1)} solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
     }`,
   },
@@ -39,8 +39,8 @@ const useStyles = createStyles((theme) => ({
   link: {
     display: 'block',
     color: theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7],
-    borderLeft: '1px solid transparent',
-    padding: `8px ${theme.spacing.md}px`,
+    borderLeft: `${rem(1)} solid transparent`,
+    padding: `${rem(8)} ${theme.spacing.md}`,
     marginLeft: -1,
   },
 

@@ -1,7 +1,7 @@
-import { createStyles } from '@mantine/core';
+import { createStyles, getStylesRef, rem } from '@mantine/core';
 
-const useStyles = createStyles((theme, _params, getRef) => {
-  const icon = getRef('icon');
+const useStyles = createStyles((theme) => {
+  const icon = getStylesRef('icon');
 
   return {
     link: {
@@ -9,7 +9,7 @@ const useStyles = createStyles((theme, _params, getRef) => {
       alignItems: 'center',
       width: '100%',
       fontSize: theme.fontSizes.xs,
-      padding: `8px ${theme.spacing.xs}px`,
+      padding: `${rem(8)} ${theme.spacing.xs}`,
       borderRadius: theme.radius.sm,
       fontWeight: 500,
       color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],

@@ -1,15 +1,15 @@
 import layoutConfig from '@config/layout';
-import { createStyles } from '@mantine/core';
+import { createStyles, rem, em } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   spacer: {
     height: layoutConfig.footer.height,
 
-    '@media (max-width: 800px)': {
+    [`@media (max-width: ${em(800)})`]: {
       height: layoutConfig.footer.heightTablet,
     },
 
-    '@media (max-width: 640px)': {
+    [`@media (max-width: ${em(640)})`]: {
       height: layoutConfig.footer.heightMobile,
     },
   },
@@ -22,55 +22,55 @@ const useStyles = createStyles((theme) => ({
     right: 0,
     height: layoutConfig.footer.height,
 
-    '@media (max-width: 800px)': {
+    [`@media (max-width: ${em(800)})`]: {
       height: layoutConfig.footer.heightTablet,
     },
 
-    '@media (max-width: 640px)': {
+    [`@media (max-width: ${em(640)})`]: {
       height: layoutConfig.footer.heightMobile,
     },
   },
 
   withNavbar: {
-    paddingLeft: layoutConfig.navbar.width + theme.spacing.md * 2,
-    paddingRight: theme.spacing.md * 2,
+    paddingLeft: `calc(${rem(layoutConfig.navbar.width)} + ${theme.spacing.md} * 2)`,
+    paddingRight: `calc(${theme.spacing.md} * 2)`,
 
-    [`@media (max-width: ${layoutConfig.mdx.breakpoint}px)`]: {
-      paddingLeft: layoutConfig.navbar.width + theme.spacing.md,
+    [`@media (max-width: ${em(layoutConfig.mdx.breakpoint)})`]: {
+      paddingLeft: `calc(${rem(layoutConfig.navbar.width)} + ${theme.spacing.md})`,
       paddingRight: theme.spacing.md,
     },
 
-    [`@media (max-width: ${layoutConfig.navbar.breakpoint}px)`]: {
+    [`@media (max-width: ${em(layoutConfig.navbar.breakpoint)})`]: {
       paddingLeft: theme.spacing.md,
       paddingRight: theme.spacing.md,
     },
   },
 
   inner: {
-    paddingTop: theme.spacing.xl * 2,
-    paddingBottom: theme.spacing.xl * 2,
+    paddingTop: `calc(${theme.spacing.xl} * 2)`,
+    paddingBottom: `calc(${theme.spacing.xl} * 2)`,
     display: 'flex',
     justifyContent: 'space-between',
 
-    '@media (max-width: 1000px)': {
+    [`@media (max-width: ${em(1000)})`]: {
       paddingTop: theme.spacing.lg,
       flexDirection: 'column',
     },
 
-    '@media (max-width: 640px)': {
+    [`@media (max-width: ${em(640)})`]: {
       paddingTop: theme.spacing.sm,
       paddingBottom: theme.spacing.md,
     },
   },
 
   logoSection: {
-    maxWidth: 300,
+    maxWidth: rem(300),
 
-    '@media (max-width: 1000px)': {
+    [`@media (max-width: ${em(1000)})`]: {
       marginBottom: theme.spacing.xl,
     },
 
-    '@media (max-width: 640px)': {
+    [`@media (max-width: ${em(640)})`]: {
       marginBottom: 0,
     },
   },
@@ -86,7 +86,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   afterFooter: {
-    borderTop: `1px solid ${
+    borderTop: `${rem(1)}  solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[2]
     }`,
     paddingTop: theme.spacing.md,
@@ -104,7 +104,7 @@ const useStyles = createStyles((theme) => ({
   groups: {
     display: 'flex',
 
-    '@media (max-width: 640px)': {
+    [`@media (max-width: ${em(640)})`]: {
       display: 'none',
     },
   },
@@ -112,17 +112,17 @@ const useStyles = createStyles((theme) => ({
   social: {
     display: 'flex',
 
-    '@media (max-width: 640px)': {
+    [`@media (max-width: ${em(640)})`]: {
       display: 'block',
     },
   },
 
   socialButton: {
-    '@media (max-width: 640px)': {
+    [`@media (max-width: ${em(640)})`]: {
       flex: 1,
       width: '100%',
       marginLeft: 0,
-      marginTop: theme.spacing.xs,
+      marginTop: theme.spacing.md,
     },
   },
 }));

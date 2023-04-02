@@ -1,11 +1,11 @@
 import layoutConfig from '@config/layout';
-import { createStyles } from '@mantine/core';
+import { createStyles, rem, em } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   navbar: {
     boxSizing: 'border-box',
     height: '100vh',
-    borderRight: `1px solid ${
+    borderRight: `${rem(1)} solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[2]
     }`,
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
@@ -16,21 +16,21 @@ const useStyles = createStyles((theme) => ({
     left: 0,
     width: layoutConfig.navbar.width,
 
-    [`@media (max-width: ${layoutConfig.navbar.breakpoint}px)`]: {
+    [`@media (max-width: ${em(layoutConfig.navbar.breakpoint)})`]: {
       display: 'none',
     },
   },
 
   section: {
     paddingRight: theme.spacing.md,
-    paddingBottom: theme.spacing.xs * 2,
+    paddingBottom: `calc(${theme.spacing.xs} * 2)`,
     paddingLeft: theme.spacing.md,
-    paddingTop: layoutConfig.header.height + theme.spacing.md,
-    borderBottom: `1px solid ${
+    paddingTop: `calc(${rem(layoutConfig.header.height)} + ${theme.spacing.md})`,
+    borderBottom: `${rem(1)} solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
     }`,
 
-    [`@media (max-width: ${layoutConfig.navbar.breakpoint}px)`]: {
+    [`@media (max-width: ${em(layoutConfig.navbar.breakpoint)})`]: {
       paddingBottom: 120,
     },
   },

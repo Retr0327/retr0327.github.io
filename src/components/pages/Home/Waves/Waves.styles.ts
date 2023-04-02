@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles, rem } from '@mantine/core';
 import { Props } from './types';
 
 const useStyles = createStyles((theme, { width, height, flip, alt }: Props) => ({
@@ -19,12 +19,12 @@ const useStyles = createStyles((theme, { width, height, flip, alt }: Props) => (
         ? theme.colors.gray[0]
         : theme.white,
     width: `${width}%`,
-    height,
+    height: rem(height),
     transform: flip ? 'scaleX(-1)' : undefined,
-    filter: alt ? undefined : 'drop-shadow(10px 5px 5px rgba(0, 0, 0, 0.03))',
+    filter: alt ? undefined : `drop-shadow(${rem(10)} ${rem(5)} ${rem(5)} rgba(0, 0, 0, 0.03))`,
 
     [theme.fn.smallerThan('sm')]: {
-      height: 18,
+      height: rem(18),
     },
   },
 }));
