@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { memo, ReactNode } from 'react';
-import { IconSearch } from '@tabler/icons';
 import { FrontMatterProps } from 'types/blog';
 import Footer from '@components/common/Footer';
+import { IconSearch } from '@tabler/icons-react';
 import { useSpotlight } from '@mantine/spotlight';
 import Menu from '@components/common/Navigation/Menu';
 import Navbar from '@components/common/Navigation/Navbar';

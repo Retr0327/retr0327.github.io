@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Text } from '@mantine/core';
 import { Frontmatter } from 'types/blog';
-import { IconArrowLeft, IconArrowRight } from '@tabler/icons';
+import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
 import useStyles from './MdxSibling.styles';
 
 type MdxSiblingProps = {

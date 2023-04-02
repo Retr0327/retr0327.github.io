@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 import { useMantineColorScheme } from '@mantine/core';
-import { IconSunHigh, IconMoon } from '@tabler/icons';
+import { IconSunHigh, IconMoon } from '@tabler/icons-react';
 import ControlBase from './Base';
 
 function ColorScheme() {

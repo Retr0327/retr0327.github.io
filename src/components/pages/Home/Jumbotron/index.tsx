@@ -1,4 +1,4 @@
-import { IconSchool } from '@tabler/icons';
+import { IconSchool } from '@tabler/icons-react';
 import { Grid, Col, Container, Box, Title, Text, Stack, List } from '@mantine/core';
 import UserInfo from './UserInfo';
 import useStyles from './Jumbotron.styles';

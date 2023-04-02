@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { ReactElement } from 'react';
 import type { AppProps } from 'next/app';
-import { TablerIcon } from '@tabler/icons';
+import { Icon } from '@tabler/icons-react';
 
 // -------- helpers --------
 
@@ -41,6 +41,6 @@ export type LinkItem = {
   label: string;
 };
 
-export type MenuLink = PartialBy<LinkItem, 'link'> & { icon: TablerIcon };
+export type MenuLink = PartialBy<LinkItem, 'link'> & { icon: Icon };
 
 export type NavLink = MenuLink & { count?: number };

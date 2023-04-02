@@ -1,6 +1,6 @@
 import { memo } from 'react';
-import { IconArrowUp } from '@tabler/icons';
 import { useWindowScroll } from '@mantine/hooks';
+import { IconArrowUp } from '@tabler/icons-react';
 import { Affix, ActionIcon, Transition } from '@mantine/core';
 
 function ScrollToTop() {

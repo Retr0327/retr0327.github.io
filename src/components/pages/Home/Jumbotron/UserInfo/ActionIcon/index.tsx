@@ -1,6 +1,6 @@
 import layoutConfig from '@config/layout';
-import { IconBook2, IconMail } from '@tabler/icons';
 import IconController from '@components/common/Icons';
+import { IconBook2, IconMail } from '@tabler/icons-react';
 import ActionIconBase from './Base';
 
 function Github() {

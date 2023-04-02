@@ -1,5 +1,5 @@
 import { memo, useMemo } from 'react';
-import { IconSunHigh, IconMoon } from '@tabler/icons';
+import { IconSunHigh, IconMoon } from '@tabler/icons-react';
 import { ActionIcon, useMantineColorScheme } from '@mantine/core';
 
 function ColorSchemeToggle() {
