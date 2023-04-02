@@ -1,6 +1,5 @@
 const layoutConfig = {
-  avatar:
-    'https://scontent.ftpe8-4.fna.fbcdn.net/v/t1.6435-9/90348802_2879430425476831_5109053951542558720_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Hg6B2XSoVEwAX_FelFZ&_nc_ht=scontent.ftpe8-4.fna&oh=00_AfBWhg0IgAI_JmvbZHDCyh-k8zwZd_inQwFkE7SL5LBDxw&oe=64202EBA',
+  avatar: 'https://i.imgur.com/6Dve09Q.jpg',
   cv: 'https://docs.google.com/document/d/1hiYT_QK5draFMMogwfwf5H2coHcJDveS/edit?usp=share_link&ouid=115833122300012543204&rtpof=true&sd=true',
   linkedin: {
     color: '#0A66C2',
