@@ -9,7 +9,7 @@ const useStyles = createStyles((theme) => ({
     position: 'relative',
     justifyContent: 'space-between',
     paddingLeft: `calc(${theme.spacing.xl} * 2)`,
-    paddingRight: `calc(${theme.spacing.xl} * 2`,
+    paddingRight: `calc(${theme.spacing.xl} * 2)`,
 
     [`@media (max-width: ${em(layoutConfig.mdx.breakpoint)})`]: {
       paddingLeft: theme.spacing.xl,
