@@ -20,13 +20,7 @@
   left: 0;
   right: 0;
   height: $footer-height;
-  @mixin light {
-    background-color: var(--mantine-color-gray-0);
-  }
-
-  @mixin dark {
-    background-color: var(--mantine-color-dark-8);
-  }
+  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
 
   &[data-with-navbar] {
     padding-left: calc($navbar-width + var(--mantine-spacing-md) * 2);
@@ -73,14 +67,7 @@
 
 .description {
   margin-top: var(--mantine-spacing-xs);
-
-  @mixin light {
-    color: var(--mantine-color-gray-6);
-  }
-
-  @mixin dark {
-    color: var(--mantine-color-dark-2);
-  }
+  color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-2));
 }
 
 .title {
@@ -91,26 +78,13 @@
 .afterFooter {
   border-top: rem(1px) solid;
   padding-top: var(--mantine-spacing-md);
-
-  @mixin light {
-    border-color: var(--mantine-color-gray-2);
-  }
-
-  @mixin dark {
-    border-color: var(--mantine-color-dark-4);
-  }
+  border-color: light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-4));
 }
 
 .afterFooterNote {
   &,
   & a {
-    @mixin light {
-      color: var(--mantine-color-gray-6);
-    }
-
-    @mixin dark {
-      color: var(--mantine-color-dark-2);
-    }
+    color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-2));
   }
 }
 
@@ -133,13 +107,6 @@
 .socialButton {
   &:last-of-type {
     margin-left: var(--mantine-spacing-md);
-  }
-
-  @mixin rtl {
-    &:last-of-type {
-      margin-left: 0;
-      margin-right: var(--mantine-spacing-md);
-    }
   }
 
   @media (max-width: $footer-breakpoint-mobile) {
