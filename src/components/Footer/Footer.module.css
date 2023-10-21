@@ -1,17 +1,17 @@
 .root {
-  --footer-height: rem(400px);
+  --root-footer-height: rem(400px);
 
   @media (max-width: 50em) {
-    --footer-height: rem(460px);
+    --root-footer-height: rem(460px);
   }
 
   @media (max-width: $footer-breakpoint-mobile) {
-    --footer-height: rem(320px);
+    --root-footer-height: rem(320px);
   }
 }
 
 .spacer {
-  height: var(--footer-height);
+  height: var(--root-height);
 }
 
 .wrapper {
@@ -19,7 +19,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: var(--footer-height);
+  height: $footer-height;
   @mixin light {
     background-color: var(--mantine-color-gray-0);
   }
