@@ -1,0 +1,17 @@
+.socialButton {
+  border: 0;
+  height: rem(42px);
+  padding-left: rem(20px);
+  padding-right: rem(20px);
+}
+
+.socialButtonSection {
+  &[data-position='left'] {
+    margin-right: var(--mantine-spacing-md);
+
+    @mixin rtl {
+      margin-left: var(--mantine-spacing-md);
+      margin-right: 0;
+    }
+  }
+}
