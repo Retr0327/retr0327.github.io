@@ -1,0 +1,25 @@
+.githubButton {
+  [data-mantine-color-scheme] & {
+    background-color: $github-color;
+    border-color: $github-color;
+    color: var(--mantine-color-white);
+
+    @mixin hover {
+      background-color: $github-color-hover;
+      border-color: $github-color-hover;
+    }
+  }
+}
+
+.linkedinButton {
+  [data-mantine-color-scheme] & {
+    background-color: $linkedin-color;
+    border-color: $linkedin-color;
+    color: var(--mantine-color-white);
+
+    @mixin hover {
+      background-color: $linkedin-color-hover;
+      border-color: $linkedin-color-hover;
+    }
+  }
+}
