@@ -15,18 +15,32 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
-      "types/*": ["./src/types/*"],
-      "types": ["./src/types/index.ts"],
       "@components/*": ["./src/components/*"],
+      "@containers/*": ["./src/containers/*"],
+      "@fonts/*": ["./src/fonts/*"],
+      "@fonts": ["./src/fonts/index.tsx"],
       "@config/*": ["./src/config/*"],
       "@config": ["./src/config/index.ts"],
-      "@hooks/*": ["./src/hooks/*"],
       "@contexts/*": ["./src/contexts/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@utils": ["./src/utils/index.ts"],
+      "types/*": ["./src/types/*"],
+      "types": ["./src/types/index.ts"],
+      "@services/*": ["./src/services/*"],
+      "@services": ["./src/services/index.ts"],
+      "@mdx": ["src/mdx-components.tsx"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "./src/types/index.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

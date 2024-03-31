@@ -1,0 +1,28 @@
+.title {
+  display: inline-block;
+  position: relative;
+  font-family: var(--font-primary);
+  font-size: rem(42px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  margin-bottom: calc(var(--mantine-spacing-xl) * 2);
+  letter-spacing: rem(1px);
+  text-transform: uppercase;
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    margin-bottom: var(--mantine-spacing-md);
+  }
+
+  @media (max-width: em(600px)) {
+    font-size: rem(28px);
+  }
+
+  &[data-white] {
+    color: var(--mantine-color-white);
+    text-shadow: rem(1px) rem(2px) rem(2px) rgba(0, 0, 0, 0.3);
+  }
+}

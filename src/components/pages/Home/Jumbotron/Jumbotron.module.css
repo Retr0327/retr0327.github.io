@@ -1,0 +1,35 @@
+$jumbotron-breakpoint: em(960px);
+
+.jumbotron {
+  position: relative;
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
+}
+
+.inner {
+  position: relative;
+  padding-top: rem(130px);
+  padding-bottom: rem(300px);
+
+  @media (max-width: $jumbotron-breakpoint) {
+    padding-top: rem(50px);
+    padding-bottom: rem(100px);
+  }
+}
+
+.title {
+  font-family: var(--font-primary);
+  font-size: rem(36px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: var(--mantine-spacing-md);
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+}
+
+.subTitle {
+  font-family: var(--font-primary);
+  font-size: rem(25px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--mantine-spacing-md);
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+}

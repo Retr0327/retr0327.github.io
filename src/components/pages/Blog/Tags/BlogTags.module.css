@@ -1,0 +1,53 @@
+.container {
+  min-height: calc(100vh - rem(350px));
+  position: relative;
+  z-index: 1;
+  padding-top: rem(80px);
+  padding-bottom: rem(80px);
+  max-width: rem($mdx-content-width + $table-content-width);
+  width: 100%;
+
+  @mixin light {
+    background-color: var(--mantine-color-white);
+    box-shadow: var(--mantine-shadow-sm);
+  }
+
+  @mixin dark {
+    background-color: var(--mantine-color-dark-7);
+    box-shadow: none;
+  }
+
+  @media (max-width: $mdx-breakpoint) {
+    padding-bottom: rem(80px);
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+.wrapper svg {
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.wrapper label {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.wrapper textarea {
+  min-height: 100px;
+}
+
+.cloudWord {
+  cursor: pointer;
+
+  @mixin hover {
+    text-decoration: underline;
+  }
+}

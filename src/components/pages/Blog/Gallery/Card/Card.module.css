@@ -1,0 +1,15 @@
+.card {
+  position: relative;
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
+  width: 95%;
+}
+
+.title {
+  display: block;
+  margin-top: var(--mantine-spacing-md);
+  margin-bottom: calc(var(--mantine-spacing-xs) / 2);
+}
+
+.footer {
+  margin-top: var(--mantine-spacing-md);
+}

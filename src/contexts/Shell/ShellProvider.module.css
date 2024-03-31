@@ -1,0 +1,16 @@
+.main {
+  padding-top: $header-height;
+  padding-left: $navbar-width;
+
+  @media (max-width: $navbar-breakpoint) {
+    padding-left: 0;
+  }
+
+  @mixin light {
+    background-color: var(--mantine-color-white);
+  }
+
+  @mixin dark {
+    background-color: var(--mantine-color-dark-7);
+  }
+}
