@@ -12,7 +12,7 @@ function Badge(props: BadgeProps) {
       key={`${badge}-${index}`}
       variant="gradient"
       component={Link}
-      href={`${Route.Tags}/${encodeURI(badge)}?page=1`}
+      href={`${Route.Tags}?tag=${encodeURI(badge)}&page=1`}
       gradient={{ from: 'indigo', to: 'cyan' }}
       style={{ cursor: 'pointer' }}
     >
