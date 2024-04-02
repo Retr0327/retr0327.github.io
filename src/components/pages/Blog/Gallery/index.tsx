@@ -1,24 +1,27 @@
-import { memo } from 'react';
-import { Stack } from '@mantine/core';
-import { BlogGalleryProps } from 'types/blog';
+import { useSearchParams } from 'next/navigation';
+import { Route, POSTS_PER_PAGE } from '@config';
+import { useMdxMetadata } from '@contexts/Mdx';
+import { pickMetadata } from '@services/mdx/selection';
+import { Stack, Container } from '@mantine/core';
 import Pagination from '@components/common/Pagination';
-import PostCard from './Card';
-import useStyles from './BlogGallery.styles';
+import classes from './BlogGallery.module.css';
+import Card from './Card';
 
-type Props = Omit<BlogGalleryProps, 'allPosts'>;
-
-function BlogGallery(props: Props) {
-  const { posts, totalPages } = props;
-  const { classes } = useStyles();
+function BlogGallery() {
+  const page = Number(useSearchParams().get('page') || 1);
+  const metadata = useMdxMetadata();
+  const { selectedMetadata, totalPages } = pickMetadata(metadata, page, POSTS_PER_PAGE, Route.Blog);
 
   return (
     <div className={classes.container}>
-      <Stack align="center" spacing={60}>
-        <PostCard posts={posts} />
-        <Pagination total={totalPages} />
+      <Stack align="center" gap={60}>
+        <Container>
+          <Card metadata={selectedMetadata} />
+        </Container>
+        <Pagination total={totalPages} defaultValue={page} />
       </Stack>
     </div>
   );
 }
 
-export default memo(BlogGallery);
+export default BlogGallery;

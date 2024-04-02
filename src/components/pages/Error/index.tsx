@@ -1,6 +1,5 @@
-import { memo } from 'react';
 import { Title, Text, Container, Group } from '@mantine/core';
-import useStyles from './ErrorPage.styles';
+import classes from './Error.module.css';
 
 type Props = {
   code: number;
@@ -10,7 +9,6 @@ type Props = {
 };
 
 function ErrorPage(props: Props) {
-  const { classes } = useStyles();
   const { code, title, description, button } = props;
 
   return (
@@ -18,13 +16,13 @@ function ErrorPage(props: Props) {
       <Container>
         <div className={classes.label}>{code}</div>
         <Title className={classes.title}>{title}</Title>
-        <Text size="lg" align="center" className={classes.description}>
+        <Text ta="center" className={classes.description}>
           {description}
         </Text>
-        <Group position="center">{button}</Group>
+        <Group justify="center">{button}</Group>
       </Container>
     </div>
   );
 }
 
-export default memo(ErrorPage);
+export default ErrorPage;

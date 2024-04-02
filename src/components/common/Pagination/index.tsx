@@ -1,41 +1,36 @@
-import { memo } from 'react';
-import { useRouter } from 'next/router';
-import { getRouteFromPathname } from '@utils';
-import { useMediaQuery } from '@mantine/hooks';
-import { em, Pagination as MantinePagination, PaginationProps } from '@mantine/core';
+import { useRouter, usePathname } from 'next/navigation';
+import { Pagination as MantinePagination } from '@mantine/core';
 
-type Props = Pick<PaginationProps, 'total'> & { onChange?: (value: number) => void };
-
-function usePaginationSize() {
-  const miniScreen = useMediaQuery(`(max-width: ${em(400)})`);
-  const smallScreen = useMediaQuery(`(max-width: ${em(485)})`);
-  return miniScreen ? 'xs' : smallScreen ? 'sm' : 'md';
+interface PaginationProps {
+  total: number;
+  defaultValue?: number;
+  onChange?: (value: number) => void;
 }
 
-function Pagination(props: Props) {
-  const { total, onChange } = props;
+function Pagination(props: PaginationProps) {
+  const { total, defaultValue = 1, onChange } = props;
   const router = useRouter();
-  const size = usePaginationSize();
+  const pathname = usePathname();
 
   const handleChange =
     onChange !== undefined
       ? onChange
       : (value: number) => {
-          const route = getRouteFromPathname(router.pathname);
-          const pushURL = `/${route}/${value}`;
-          if (router.asPath === pushURL) return undefined;
-          return router.push(pushURL);
+          const prev = `${pathname}?page=${defaultValue}`;
+          const next = `${pathname}?page=${value}`;
+          if (prev === next) return undefined;
+          return router.push(next);
         };
 
   return (
     <MantinePagination
       total={total}
-      defaultValue={1}
+      defaultValue={defaultValue}
       withEdges
-      size={size}
+      size="md"
       onChange={handleChange}
     />
   );
 }
 
-export default memo(Pagination);
+export default Pagination;

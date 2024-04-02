@@ -1,33 +1,27 @@
-import { useMemo } from 'react';
-import { Container, Text, DefaultProps, Box } from '@mantine/core';
-import SectionTitle from './Title';
-import useStyles from './PageSection.styles';
+import React from 'react';
+import { Box, BoxProps, Container, ElementProps, Text } from '@mantine/core';
+import SectionTitle from './SectionTitle';
+import classes from './PageSection.module.css';
 
-interface Props extends DefaultProps {
+interface PageSectionProps extends BoxProps, ElementProps<'div'> {
   title: string;
   description?: string;
   children: React.ReactNode;
 }
 
-function PageSection(props: Props) {
+function PageSection(props: PageSectionProps) {
   const { title, description, children, ...rest } = props;
-  const { classes } = useStyles();
-
-  const descr = useMemo(
-    () =>
-      description !== undefined ? (
-        <Text className={classes.description} size="xl">
-          {description}
-        </Text>
-      ) : null,
-    [description, classes.description]
-  );
-
   return (
     <Box className={classes.wrapper} {...rest}>
       <Container size={1100}>
         <SectionTitle>{title}</SectionTitle>
-        {descr}
+
+        {description && (
+          <Text className={classes.description} size="xl">
+            {description}
+          </Text>
+        )}
+
         {children}
       </Container>
     </Box>

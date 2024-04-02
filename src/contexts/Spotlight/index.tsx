@@ -1,58 +1,52 @@
-import { rem, em } from '@mantine/core';
-import { FrontMatterProps } from 'types/blog';
-import { useMediaQuery } from '@mantine/hooks';
-import { memo, useMemo, ReactNode } from 'react';
+'use client';
+
+import { useRouter } from 'next/navigation';
+import { Route } from '@config';
 import { IconSearch } from '@tabler/icons-react';
-import { NextRouter, useRouter } from 'next/router';
-import { SpotlightProvider as MantineSpotlightProvider, SpotlightAction } from '@mantine/spotlight';
+import { rem } from '@mantine/core';
+import { createSpotlight, Spotlight } from '@mantine/spotlight';
+import { useMdxMetadata } from '@contexts/Mdx';
 
-type Props = {
-  posts: FrontMatterProps[];
-  children: ReactNode;
-};
-
-function createActions(
-  posts: Pick<Props, 'posts'>['posts'],
-  router: NextRouter
-): SpotlightAction[] {
-  return posts.map(({ frontMatter }) => ({
-    title: frontMatter.title,
-    description: `發表於 ${frontMatter.createdAt}${
-      frontMatter.updatedAt !== undefined ? ` | 更新於 ${frontMatter.updatedAt}` : ''
-    } • 標籤：${frontMatter.category.join('、')}`,
-    keywords: frontMatter.category,
-    onTrigger: () => router.push(frontMatter.slug),
-  }));
+interface SpotlightProviderProps {
+  children: React.ReactNode;
 }
 
-function SpotlightProvider(props: Props) {
-  const { posts, children } = props;
+export const [searchStore, searchHandlers] = createSpotlight();
+
+function SpotlightProvider(props: SpotlightProviderProps) {
   const router = useRouter();
-  const smallScreen = useMediaQuery(`(max-width: ${em(485)})`);
-  const actions = useMemo(() => createActions(posts, router), [posts, router, router.pathname]);
+  const { children } = props;
+  const metadata = useMdxMetadata();
+  const actions: any[] = metadata.map((post) => ({
+    id: post.slug,
+    label: post.title,
+    description: `發表於 ${post.createdAt}${
+      post.updatedAt !== undefined ? ` | 更新於 ${post.updatedAt}` : ''
+    } • 標籤：${post.category.join('、')}`,
+    keywords: post.category,
+    onClick: () => router.push(`${Route.BlogPost}/${post.slug}`),
+  }));
 
   return (
-    <MantineSpotlightProvider
-      actions={actions}
-      searchIcon={<IconSearch size={18} />}
-      searchPlaceholder="Search posts"
-      shortcut={['mod + K']}
-      highlightQuery
-      transitionProps={{
-        duration: 150,
-        transition: {
-          in: { transform: 'translateY(0)', opacity: 1 },
-          out: { transform: `translateY(-${rem(20)})`, opacity: 0 },
-          transitionProperty: 'transform, opacity',
-        },
-      }}
-      limit={5}
-      nothingFoundMessage="Nothing found..."
-      style={{ maxWidth: smallScreen ? rem(350) : rem(600) }}
-    >
+    <>
+      <Spotlight
+        store={searchStore}
+        shortcut={['mod + K', 'mod + P', '/']}
+        actions={actions}
+        tagsToIgnore={[]}
+        highlightQuery
+        clearQueryOnClose
+        radius="md"
+        limit={7}
+        nothingFound="Nothing found..."
+        searchProps={{
+          leftSection: <IconSearch style={{ width: rem(20), height: rem(20) }} />,
+          placeholder: 'Search documentation...',
+        }}
+      />
       {children}
-    </MantineSpotlightProvider>
+    </>
   );
 }
 
-export default memo(SpotlightProvider);
+export default SpotlightProvider;

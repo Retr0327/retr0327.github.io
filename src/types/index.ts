@@ -1,46 +1,27 @@
-import type { NextPage } from 'next';
-import { ReactElement } from 'react';
-import type { AppProps } from 'next/app';
-import { Icon } from '@tabler/icons-react';
+import type { BoxProps, ElementProps } from '@mantine/core';
+import { Icon123 } from '@tabler/icons-react';
 
-// -------- helpers --------
+export interface LinkData {
+  type: 'link' | 'next';
+  label: string;
+  link: string;
+}
 
-export type PickAsOrNull<T, K extends keyof T> = Omit<T, K> & {
-  [P in K]: T[P] | null;
-};
+export interface NavbarData extends LinkData {
+  icon: typeof Icon123;
+  count?: number;
+}
 
-export type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+export interface FooterLinksGroupProps {
+  title: string;
+  data: LinkData[];
+}
 
-export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
-
-// -------- NextJs --------
-
-export type PageControl<T = {}> = {
-  Layout?: (props: { children?: ReactElement<T> }) => JSX.Element;
-};
-
-export type NextPageWithControl<P = {}, IP = P> = NextPage<P, IP> & { control?: PageControl<P> };
-
-export type AppPropsWithControl<T = any> = AppProps & {
-  Component: NextPageWithControl<T>;
-};
-
-// ---- miscellaneous ----
-
-export interface IconProps extends React.ComponentPropsWithoutRef<'svg'> {
-  size?: number;
+export interface IconProps extends BoxProps, ElementProps<'svg', 'display' | 'opacity'> {
+  size?: number | string;
 }
 
 export type IconControllerProps =
   | ({ control: 'github' } & IconProps)
   | ({ control: 'facebook' } & IconProps)
   | ({ control: 'linkedin' } & IconProps);
-
-export type LinkItem = {
-  link: string;
-  label: string;
-};
-
-export type MenuLink = PartialBy<LinkItem, 'link'> & { icon: Icon };
-
-export type NavLink = MenuLink & { count?: number };

@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { IconControllerProps } from 'types';
 import GithubIcon from './Github';
 import LinkedInIcon from './LinkedIn';
@@ -15,8 +14,8 @@ function IconController(props: IconControllerProps) {
     case 'linkedin':
       return <LinkedInIcon {...rest} />;
     default:
-      return null;
+      throw new Error('Invalid control');
   }
 }
 
-export default memo(IconController);
+export default IconController;

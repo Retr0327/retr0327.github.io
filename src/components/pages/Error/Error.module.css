@@ -1,0 +1,42 @@
+.root {
+  padding-top: rem(180px);
+  padding-bottom: rem(180px);
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: rem(140);
+  }
+}
+
+.label {
+  text-align: center;
+  font-weight: 900;
+  font-size: rem(220px);
+  line-height: 1;
+  margin-bottom: calc(1.5 * var(--mantine-spacing-xl));
+  color: light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-4));
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: rem(120px);
+  }
+}
+
+.description {
+  max-width: rem(540px);
+  margin: auto;
+  margin-top: var(--mantine-spacing-xl);
+  margin-bottom: calc(1.5 * var(--mantine-spacing-xl));
+}
+
+.title {
+  font-family:
+    Greycliff CF,
+    var(--mantine-font-family);
+  text-align: center;
+  font-weight: 900;
+  font-size: rem(38px);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: rem(32px);
+  }
+}

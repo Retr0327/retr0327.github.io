@@ -1,0 +1,49 @@
+.header {
+  padding-top: var(--mantine-spacing-xl);
+  max-width: rem(1082px);
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: var(--mantine-spacing-xs);
+
+  @media (max-width: $mdx-breakpoint) {
+    max-width: 100%;
+    padding-bottom: var(--mantine-spacing-xl);
+  }
+}
+
+.title {
+  font-size: rem(44px);
+  margin-bottom: rem(5px);
+  font-weight: 900;
+  font-family: var(--font-primary);
+
+  @media (max-width: $mdx-breakpoint) {
+    font-size: rem(32px);
+  }
+
+  @mixin light {
+    color: var(--mantine-color-black);
+  }
+
+  @mixin dark {
+    color: var(--mantine-color-white);
+  }
+}
+
+.timestamp {
+  max-width: rem(450px);
+  margin-bottom: var(--mantine-spacing-xl);
+  font-size: var(--mantine-font-size-lg);
+
+  @media (max-width: $mdx-breakpoint) {
+    font-size: var(--mantine-font-size-md);
+  }
+
+  @mixin light {
+    color: var(--mantine-color-gray-6);
+  }
+
+  @mixin dark {
+    color: var(--mantine-color-dark-1);
+  }
+}

@@ -1,34 +1,30 @@
 import Link from 'next/link';
-import Route from '@config/routes';
-import { memo, useMemo } from 'react';
+import { Route } from '@config/index';
 import { Group, Badge as MantineBadge } from '@mantine/core';
 
-type Props = { data: string[] };
+interface BadgeProps {
+  badges: string[];
+}
 
-function Badge(props: Props) {
-  const { data } = props;
-  const badges = useMemo(
-    () =>
-      data.map((value, index) => (
-        <MantineBadge
-          key={`${value}-${index}`}
-          variant="gradient"
-          component={Link}
-          href={`${Route.tags}/tag?id=${encodeURI(value)}${encodeURI('&')}page=1`}
-          gradient={{ from: 'indigo', to: 'cyan' }}
-          sx={{ cursor: 'pointer' }}
-        >
-          {value}
-        </MantineBadge>
-      )),
-    [data]
-  );
+function Badge(props: BadgeProps) {
+  const badges = props.badges.map((badge, index) => (
+    <MantineBadge
+      key={`${badge}-${index}`}
+      variant="gradient"
+      component={Link}
+      href={`${Route.Tags}?tag=${encodeURI(badge)}&page=1`}
+      gradient={{ from: 'indigo', to: 'cyan' }}
+      style={{ cursor: 'pointer' }}
+    >
+      {badge}
+    </MantineBadge>
+  ));
 
   return (
-    <Group spacing={8} mr={0}>
+    <Group gap={8} mr={0}>
       {badges}
     </Group>
   );
 }
 
-export default memo(Badge);
+export default Badge;

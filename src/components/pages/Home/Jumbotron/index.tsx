@@ -1,21 +1,21 @@
+'use client';
+
 import { IconSchool } from '@tabler/icons-react';
-import { Grid, Col, Container, Box, Title, Text, Stack, List } from '@mantine/core';
-import UserInfo from './UserInfo';
-import useStyles from './Jumbotron.styles';
+import { Box, Container, Title, List, Text, Grid, Stack } from '@mantine/core';
+import classes from './Jumbotron.module.css';
+import Avatar from './Avatar';
 
 function Jumbotron() {
-  const { classes } = useStyles();
-
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.jumbotron}>
       <Container size={1100} className={classes.inner}>
         <Grid gutter={80}>
-          <Col span={12} md={5}>
-            <UserInfo />
-          </Col>
-          <Col span={12} md={7}>
-            <Box sx={{ maxWidth: 600, wordBreak: 'break-word' }}>
-              <Stack spacing={0}>
+          <Grid.Col span={{ base: 12, md: 5 }}>
+            <Avatar />
+          </Grid.Col>
+          <Grid.Col span={{ base: 12, md: 7 }}>
+            <Box style={{ maxWidth: 600, wordBreak: 'break-word' }}>
+              <Stack gap={0}>
                 <Title className={classes.title}>About Me</Title>
                 <Text mt="md" size="lg">
                   Hi! This is Lixing. I am seeking internships in web development, specifically in
@@ -37,7 +37,7 @@ function Jumbotron() {
                 </List>
               </Stack>
             </Box>
-          </Col>
+          </Grid.Col>
         </Grid>
       </Container>
     </div>

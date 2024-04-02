@@ -25,7 +25,6 @@ jobs:
         cache: 'pnpm'
     - run: pnpm install --frozen-lockfile
     - run: pnpm run build
-    - run: pnpm run export
     
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4

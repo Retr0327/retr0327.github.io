@@ -1,46 +1,51 @@
+import { Card as MantineCard, Stack, Image, Text, Group } from '@mantine/core';
 import Link from 'next/link';
-import { memo } from 'react';
+import { Route } from '@config';
 import Badge from '@components/common/Badge';
-import { BlogGalleryProps } from 'types/blog';
-import { Card, Stack, Image, Text, Group } from '@mantine/core';
-import useStyles from './PostCard.styles';
+import { PostMetadataType } from 'types/mdx';
+import classes from './Card.module.css';
 
-type Props = Pick<BlogGalleryProps, 'posts'>;
+interface CardProps {
+  metadata: PostMetadataType[];
+}
 
-function PostCard(props: Props) {
-  const { posts } = props;
-  const { classes } = useStyles();
-
-  const items = posts.map(({ frontMatter }, index) => (
-    <Card key={`${frontMatter.title}-${index}`} withBorder radius="md" className={classes.card}>
-      <Card.Section>
-        <Link href={frontMatter.slug}>
-          <Image src={frontMatter.coverImage} height={300} />
+function Card(props: CardProps) {
+  const { metadata } = props;
+  const items = metadata.map((post, index) => (
+    <MantineCard key={`${post.title}-${index}`} withBorder radius="md" className={classes.card}>
+      <MantineCard.Section>
+        <Link href={`${Route.BlogPost}/${post.slug}`}>
+          <Image src={post.coverImage} height={300} />
         </Link>
-      </Card.Section>
+      </MantineCard.Section>
 
-      <Text className={classes.title} weight={500} component={Link} href={frontMatter.slug}>
-        {frontMatter.title}
+      <Text
+        className={classes.title}
+        w={500}
+        component={Link}
+        href={`${Route.BlogPost}/${post.slug}`}
+      >
+        {post.title}
       </Text>
 
-      <Text size="sm" color="dimmed" lineClamp={4}>
-        {frontMatter.excerpt}
+      <Text size="sm" c="dimmed" lineClamp={4}>
+        {post.excerpt}
       </Text>
 
-      <Group position="apart" className={classes.footer}>
-        <Text size="sm" color="dimmed">
-          發表於 {frontMatter.createdAt}
-          {frontMatter.updatedAt !== undefined ? ` | 更新於 ${frontMatter.updatedAt}` : null}
+      <Group justify="space-between" className={classes.footer}>
+        <Text size="sm" c="dimmed">
+          發表於 {post.createdAt}
+          {post.updatedAt !== undefined ? ` | 更新於 ${post.updatedAt}` : null}
         </Text>
-        <Badge data={frontMatter.category} />
+        <Badge badges={post.category} />
       </Group>
-    </Card>
+    </MantineCard>
   ));
   return (
-    <Stack align="center" sx={{ width: '100%' }} spacing={50}>
+    <Stack align="center" style={{ width: '100%' }} gap={50}>
       {items}
     </Stack>
   );
 }
 
-export default memo(PostCard);
+export default Card;
