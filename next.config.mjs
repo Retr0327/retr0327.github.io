@@ -27,11 +27,10 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
-
   },
   images: { unoptimized: true },
   poweredByHeader: false,
-  output: 'standalone',
+  output: 'export',
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve = {
