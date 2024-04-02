@@ -1,11 +1,12 @@
 'use client';
 
-import BlogGallery from '@components/pages/Blog/Gallery';
 import { Suspense } from 'react';
+import { Loader } from '@mantine/core';
+import BlogGallery from '@components/pages/Blog/Gallery';
 
 function BlogPage() {
   return (
-    <Suspense>
+    <Suspense fallback={<Loader />}>
       <BlogGallery />
     </Suspense>
   );

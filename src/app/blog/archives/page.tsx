@@ -1,21 +1,12 @@
 'use client';
 
-import BlogArchives from '@components/pages/Blog/Archives';
 import { Suspense } from 'react';
+import { Loader } from '@mantine/core';
+import BlogArchives from '@components/pages/Blog/Archives';
 
 function BlogArchivesPage() {
-  // const page = Number(useSearchParams().get('page') || 1);
-  // const metadata = useMdxMetadata();
-  // const { selectedMetadata, totalPages } = pickMetadata(
-  //   metadata,
-  //   page,
-  //   ARCHIVES_PER_PAGE,
-  //   Route.Archives
-  // );
-
   return (
-    // <BlogArchives metadata={selectedMetadata} paginationNumber={totalPages} currentPage={page} />
-    <Suspense>
+    <Suspense fallback={<Loader />}>
       <BlogArchives />
     </Suspense>
   );
