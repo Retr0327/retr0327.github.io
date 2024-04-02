@@ -4,14 +4,17 @@ import Pagination from '@components/common/Pagination';
 import { useMdxMetadata } from '@contexts/Mdx';
 import { pickMetadata } from '@services/mdx/selection';
 import { ARCHIVES_PER_PAGE } from '@config/index';
-import { useParams, useSearchParams, redirect } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { Route } from '@config';
 import classes from './BlogTagArchives.module.css';
 
-function BlogTagArchives() {
-  const { tag: encodedTag } = useParams();
-  const tag = decodeURI(encodedTag as string);
-  const page = Number(useSearchParams().get('page') || 1);
+interface BlogTagArchivesProps {
+  tag: string;
+  page: number;
+}
+
+function BlogTagArchives(props: BlogTagArchivesProps) {
+  const { tag, page } = props;
   const metadata = useMdxMetadata();
   const filteredMetadata = metadata.filter((post) => post.category.includes(tag));
   if (filteredMetadata.length === 0) {
