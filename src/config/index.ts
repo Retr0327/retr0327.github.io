@@ -9,7 +9,7 @@ const url = (...args: string[]): string => urlJoin(root, ...args);
 const blog = (...args: string[]) => url('blog', ...args);
 
 const Route = {
-  Home: url(),
+  Home: url(root),
   Blog: blog(),
   BlogPost: blog('p'),
   Tags: blog('tags'),
