@@ -2,10 +2,8 @@ import urlJoin from 'url-join';
 
 const POSTS_PER_PAGE = 6;
 const ARCHIVES_PER_PAGE = 10;
-const isProduction = process.env.NODE_ENV === 'production';
-const root = isProduction ? 'https://retr0327.github.io' : '/';
 
-const url = (...args: string[]): string => urlJoin(root, ...args);
+const url = (...args: string[]): string => urlJoin('/', ...args);
 const blog = (...args: string[]) => url('blog', ...args);
 
 const Route = {
@@ -32,4 +30,4 @@ const Href = {
   },
 } as const;
 
-export { POSTS_PER_PAGE, ARCHIVES_PER_PAGE, root, isProduction, Route, Href };
+export { POSTS_PER_PAGE, ARCHIVES_PER_PAGE, Route, Href };
