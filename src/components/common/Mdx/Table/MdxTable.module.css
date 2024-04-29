@@ -1,7 +1,0 @@
-.table {
-  width: 50%;
-
-  @media (max-width: 47.5em) {
-    width: 100%;
-  }
-}

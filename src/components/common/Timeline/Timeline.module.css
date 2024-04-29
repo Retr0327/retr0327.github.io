@@ -1,5 +1,0 @@
-.title {
-  @mixin hover {
-    text-decoration: underline;
-  }
-}
