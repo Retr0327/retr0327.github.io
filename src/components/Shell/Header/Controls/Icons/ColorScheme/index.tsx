@@ -16,8 +16,8 @@ function ColorSchemeControl() {
       tooltip={`${computedColorScheme === 'dark' ? 'Light' : 'Dark'} mode`}
       aria-label="Toggle color scheme"
     >
-      <IconController control="sun" className={cx(classes.icon, classes.light)} size={22} />
-      <IconController control="moon" className={cx(classes.icon, classes.dark)} size={22} />
+      <IconController control="sun" className={cx(classes.icon, classes.dark)} size={22} />
+      <IconController control="moon" className={cx(classes.icon, classes.light)} size={22} />
     </HeaderControl>
   );
 }
