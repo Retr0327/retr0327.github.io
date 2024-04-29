@@ -22,9 +22,9 @@
     ],
     "paths": {
       "@components/*": ["./src/components/*"],
-      "@containers/*": ["./src/containers/*"],
-      "@fonts/*": ["./src/fonts/*"],
-      "@fonts": ["./src/fonts/index.tsx"],
+      "@views/*": ["./src/views/*"],
+      "@fonts/*": ["src/components/Fonts/*"],
+      "@fonts": ["src/components/Fonts/index.tsx"],
       "@config/*": ["./src/config/*"],
       "@config": ["./src/config/index.ts"],
       "@contexts/*": ["./src/contexts/*"],
