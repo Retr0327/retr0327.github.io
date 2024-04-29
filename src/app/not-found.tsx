@@ -1,12 +1,12 @@
-import ErrorPage from '@components/pages/Error';
-import { Button } from '@mantine/core';
 import Link from 'next/link';
 import { Route } from '@config';
+import { Button } from '@mantine/core';
+import ErrorPage from '@views/Error';
 
 function NotFoundPage() {
   return (
     <ErrorPage
-      code={404}
+      code="404"
       title="You have found a secret place."
       description="Unfortunately, this is only a 404 page. You may have mistyped the address, or the page has been moved to another URL."
       button={
