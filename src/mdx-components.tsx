@@ -10,7 +10,7 @@ import {
   MdxCode,
   MdxImage,
   MdxTable,
-} from '@components/common/Mdx';
+} from '@components/Mdx';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
