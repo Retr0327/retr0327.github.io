@@ -2,7 +2,7 @@
 
 import { Suspense } from 'react';
 import { Loader } from '@mantine/core';
-import BlogGallery from '@components/pages/Blog/Gallery';
+import BlogGallery from '@views/Blog/Gallery';
 
 function BlogPage() {
   return (
