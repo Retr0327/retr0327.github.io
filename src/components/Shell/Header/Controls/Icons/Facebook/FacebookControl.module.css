@@ -1,0 +1,12 @@
+.facebook {
+  [data-mantine-color-scheme] & {
+    background-color: $facebook-color;
+    border-color: $facebook-color;
+    color: var(--mantine-color-white);
+
+    @mixin hover {
+      background-color: $facebook-color-hover;
+      border-color: $facebook-color-hover;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+.header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 101;
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+  top: 0;
+  left: 0;
+  right: 0;
+
+  &[data-desktop] {
+    @media (max-width: 47.5em) {
+      display: none;
+    }
+  }
+
+  &[data-mobile] {
+    @media (min-width: 47.5625em) {
+      display: none;
+    }
+  }
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-1));
+  font-weight: 700;
+  pointer-events: all;
+  transition:
+    border-color 100ms ease,
+    color 100ms ease;
+
+  @mixin hover {
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+    text-decoration: none;
+  }
+  @media (min-width: 47.5625em) {
+    padding-left: var(--mantine-spacing-sm);
+  }
+}

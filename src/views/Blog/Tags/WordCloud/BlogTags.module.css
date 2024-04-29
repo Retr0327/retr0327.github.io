@@ -1,0 +1,61 @@
+.container {
+  position: relative;
+  z-index: 1;
+  padding-top: 50px;
+  padding-bottom: 40px;
+  max-width: rem($mdx-content-width + $table-content-width);
+  width: 100%;
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
+
+  @mixin light {
+    background-color: var(--mantine-color-white);
+    box-shadow: var(--mantine-shadow-sm);
+  }
+
+  @mixin dark {
+    background-color: var(--mantine-color-dark-7);
+    box-shadow: none;
+  }
+
+  @media (max-width: $mdx-breakpoint) {
+    padding-bottom: 80px;
+  }
+
+  @media (min-width: 47.5625em) {
+    min-height: calc(100vh - 420px);
+  }
+
+  @media (max-width: 47.5em) {
+    height: 100vh;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+.wrapper svg {
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.wrapper label {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.wrapper textarea {
+  min-height: 100px;
+}
+
+.cloudWord {
+  cursor: pointer;
+
+  @mixin hover {
+    text-decoration: underline;
+  }
+}

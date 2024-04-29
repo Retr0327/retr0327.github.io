@@ -1,0 +1,23 @@
+.links {
+  margin-right: calc(var(--mantine-spacing-sm) * -1);
+}
+
+.link {
+  font-size: var(--mantine-font-size-md);
+  line-height: 1;
+  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+  padding: 8px 12px;
+  font-weight: 600;
+  transition:
+    border-color 100ms ease,
+    color 100ms ease;
+
+  @mixin hover {
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+    text-decoration: none;
+  }
+
+  &[data-active] {
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  }
+}
