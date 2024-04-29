@@ -22,6 +22,11 @@ export interface IconProps extends BoxProps, ElementProps<'svg', 'display' | 'op
 }
 
 export type IconControllerProps =
+  | ({ control: 'sun' } & IconProps)
+  | ({ control: 'moon' } & IconProps)
   | ({ control: 'github' } & IconProps)
+  | ({ control: 'animated-github' } & IconProps)
   | ({ control: 'facebook' } & IconProps)
-  | ({ control: 'linkedin' } & IconProps);
+  | ({ control: 'animated-facebook' } & IconProps)
+  | ({ control: 'linkedin' } & IconProps)
+  | ({ control: 'animated-linkedin' } & IconProps);

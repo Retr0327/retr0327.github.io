@@ -4,10 +4,10 @@ import '@mantine/spotlight/styles.css';
 
 import theme from '@config/theme';
 import type { Metadata, Viewport } from 'next';
-import FontsStyle from '@fonts';
-import GaScript from '@components/common/GAScript';
+import FontsStyle from '@components/Fonts';
+import GaScript from '@components/GAScript';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
-import ShellProvider from '@contexts/Shell';
+import Shell from '@components/Shell';
 import SpotlightProvider from '@contexts/Spotlight';
 import { getPostsMetadata } from '@services/mdx';
 import { MdxMetadataProvider } from '@contexts/Mdx';
@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <MantineProvider theme={theme}>
           <MdxMetadataProvider metadata={postsMetadata}>
             <SpotlightProvider>
-              <ShellProvider>{children}</ShellProvider>
+              <Shell>{children}</Shell>
             </SpotlightProvider>
           </MdxMetadataProvider>
         </MantineProvider>

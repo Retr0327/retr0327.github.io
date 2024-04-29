@@ -2,7 +2,7 @@
 
 import { Suspense } from 'react';
 import { Loader } from '@mantine/core';
-import BlogTagPage from '@components/pages/Blog/Tags';
+import BlogTagPage from '@views/Blog/Tags';
 
 function BlogTagsPage() {
   return (
