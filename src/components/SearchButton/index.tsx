@@ -1,7 +1,7 @@
+import { searchHandlers } from '@components/Spotlight';
 import { IconSearch } from '@tabler/icons-react';
 import cx from 'clsx';
 import { BoxProps, ElementProps, Group, rem, Text, UnstyledButton } from '@mantine/core';
-import { searchHandlers } from '@contexts/Spotlight';
 import classes from './SearchButton.module.css';
 
 interface SearchButtonProps extends BoxProps, ElementProps<'button'> {}
