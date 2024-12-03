@@ -15,11 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "plugins": [{ "name": "next" }],
     "paths": {
       "@components/*": ["./src/components/*"],
       "@views/*": ["./src/views/*"],
@@ -27,6 +23,8 @@
       "@fonts": ["src/components/Fonts/index.tsx"],
       "@config/*": ["./src/config/*"],
       "@config": ["./src/config/index.ts"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@hooks": ["./src/hooks/index.ts"],
       "@contexts/*": ["./src/contexts/*"],
       "types/*": ["./src/types/*"],
       "types": ["./src/types/index.ts"],
