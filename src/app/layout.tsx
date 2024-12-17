@@ -9,12 +9,15 @@ import GaScript from '@components/GAScript';
 import Shell from '@components/Shell';
 import Spotlight from '@components/Spotlight';
 import theme from '@config/theme';
+import { MdxDataProvider } from '@contexts/mdx-data';
+import { getPostsMetadata } from '@services/mdx';
 
 export const metadata: Metadata = {
   title: 'Lixing Yang | Retr0',
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const postsMetadata = await getPostsMetadata();
   return (
     <html lang="en" translate="no" suppressHydrationWarning>
       <head>
@@ -28,8 +31,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <FontsStyle />
       <body>
         <MantineProvider theme={theme}>
-          <Spotlight />
-          <Shell>{children}</Shell>
+          <MdxDataProvider mdxMetadata={postsMetadata}>
+            <Spotlight />
+            <Shell>{children}</Shell>
+          </MdxDataProvider>
         </MantineProvider>
       </body>
     </html>
