@@ -1,9 +1,7 @@
-import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
-import createMDX from '@next/mdx';
+import remarkGfm from 'remark-gfm';
 import NextBundleAnalyzer from '@next/bundle-analyzer';
-
-const isProduction = process.env.NODE_ENV === 'production';
+import createMDX from '@next/mdx';
 
 const withBundleAnalyzer = NextBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
@@ -20,8 +18,7 @@ const withMDX = createMDX({
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['tsx', 'mdx'],
-  swcMinify: true,
-  assetPrefix: isProduction ? 'https://retr0327.github.io/' : '/',
+  assetPrefix: 'https://retr0327.github.io/',
   eslint: {
     ignoreDuringBuilds: true,
   },
