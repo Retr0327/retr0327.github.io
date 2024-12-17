@@ -1,17 +1,19 @@
-import { useSearchParams } from 'next/navigation';
-import { Route, POSTS_PER_PAGE } from '@config';
-import { useMdxMetadata } from '@contexts/Mdx';
-import { pickMetadata } from '@services/mdx/selection';
-import { Stack, Container } from '@mantine/core';
+import { redirect, useSearchParams } from 'next/navigation';
+import { Container, Stack } from '@mantine/core';
 import Pagination from '@components/Pagination';
-import classes from './BlogGallery.module.css';
+import { POSTS_PER_PAGE, Route } from '@config';
+import { useMdxData } from '@contexts/mdx-data';
 import Card from './Card';
+import classes from './BlogGallery.module.css';
 
 function BlogGallery() {
   const page = Number(useSearchParams().get('page') || 1);
-  const metadata = useMdxMetadata();
-  const { selectedMetadata, totalPages } = pickMetadata(metadata, page, POSTS_PER_PAGE, Route.Blog);
-
+  const { mdx, pick } = useMdxData();
+  const result = pick(mdx.metadata, page, POSTS_PER_PAGE);
+  if (result === null) {
+    redirect(`${Route.Blog}?page=1`);
+  }
+  const { selectedMetadata, totalPages } = result;
   return (
     <div className={classes.container}>
       <Stack align="center" gap={60}>

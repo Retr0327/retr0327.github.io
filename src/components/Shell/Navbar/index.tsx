@@ -1,10 +1,10 @@
-import { AppShell, Box, ScrollArea } from '@mantine/core';
 import cx from 'clsx';
-import { NAVBAR_LINKS_DATA } from '@config/links';
-import SearchButton from '@components/SearchButton';
 import { NavbarData } from 'types';
-import { useMdxMetadata } from '@contexts/Mdx';
+import { AppShell, Box, ScrollArea } from '@mantine/core';
+import SearchButton from '@components/SearchButton';
 import { Route } from '@config';
+import { NAVBAR_LINKS_DATA } from '@config/links';
+import { useMdxData } from '@contexts/mdx-data';
 import { IconArchive, IconTag } from '@tabler/icons-react';
 import NavbarLinksGroup from './LinksGroup';
 import classes from './Navbar.module.css';
@@ -16,16 +16,16 @@ interface NavbarProps {
 
 function Navbar(props: NavbarProps) {
   const { navbarOpened, onNavbarClose } = props;
-  const metadata = useMdxMetadata();
-  const categories = new Set(metadata.flatMap((post) => post.category));
+  const { mdx } = useMdxData();
+  const categorySet = new Set(mdx.categories);
   const links: NavbarData[] = [
     ...NAVBAR_LINKS_DATA,
-    { type: 'next', label: 'Tags', link: Route.Tags, icon: IconTag, count: categories.size },
+    { type: 'next', label: 'Tags', link: Route.Tags, icon: IconTag, count: categorySet.size },
     {
       type: 'next',
       label: 'Archives',
       icon: IconArchive,
-      count: metadata.length,
+      count: mdx.metadata.length,
       link: `${Route.Archives}?page=1`,
     },
   ];

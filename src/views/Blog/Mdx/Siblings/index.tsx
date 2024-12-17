@@ -1,9 +1,8 @@
 import Link from 'next/link';
-import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
 import cx from 'clsx';
 import { Box, FOCUS_CLASS_NAMES, Text } from '@mantine/core';
-import { useMdxMetadata } from '@contexts/Mdx';
-import { getMdxSiblings } from './get-mdx-siblings';
+import { useMdxData } from '@contexts/mdx-data';
+import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
 import classes from './MdxSiblings.module.css';
 
 interface MdxSiblingsProps {
@@ -11,8 +10,8 @@ interface MdxSiblingsProps {
 }
 
 function MdxSiblings(props: MdxSiblingsProps) {
-  const metadata = useMdxMetadata();
-  const { prev, next } = getMdxSiblings(props.slug, metadata);
+  const { mdx, getSiblingsBySlug } = useMdxData();
+  const { prev, next } = getSiblingsBySlug(mdx.metadata, props.slug);
 
   return (
     <div className={classes.root}>
