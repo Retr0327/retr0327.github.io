@@ -1,7 +1,6 @@
 export function getLanguage(children: any) {
-  const matches = (children.props.className || '').match(/language-(?<lang>.*)/);
-  const matchedLanguage =
-    matches && matches.groups && matches.groups.lang ? matches.groups.lang : 'tsx';
+  const matches = (children.props.className || '').match(/language-(.*)/);
+  const matchedLanguage = matches && matches[1] ? matches[1] : 'tsx';
 
   if (['js', 'jsx', 'javascript', 'ts', 'tsx'].includes(matchedLanguage)) {
     return 'tsx';
