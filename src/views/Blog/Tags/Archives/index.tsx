@@ -1,11 +1,10 @@
-import { Stack, Center, Container } from '@mantine/core';
-import BlogTimeline from '@components/Timeline';
+import { useRouter } from 'next/navigation';
+import { Center, Container, Stack } from '@mantine/core';
 import Pagination from '@components/Pagination';
-import { useMdxMetadata } from '@contexts/Mdx';
-import { pickMetadata } from '@services/mdx/selection';
-import { ARCHIVES_PER_PAGE } from '@config/index';
-import { redirect } from 'next/navigation';
+import BlogTimeline from '@components/Timeline';
 import { Route } from '@config';
+import { ARCHIVES_PER_PAGE } from '@config/index';
+import { useMdxData } from '@contexts/mdx-data';
 import classes from './BlogTagArchives.module.css';
 
 interface BlogTagArchivesProps {
@@ -15,19 +14,21 @@ interface BlogTagArchivesProps {
 
 function BlogTagArchives(props: BlogTagArchivesProps) {
   const { tag, page } = props;
-  const metadata = useMdxMetadata();
-  const filteredMetadata = metadata.filter((post) => post.category.includes(tag));
+  const { mdx, pick } = useMdxData();
+  const router = useRouter();
+  const filteredMetadata = mdx.metadata.filter((post) => post.category.includes(tag));
   if (filteredMetadata.length === 0) {
-    redirect(Route.NotFound);
+    router.push(Route.NotFound);
+    return null;
   }
 
-  const { selectedMetadata, totalPages } = pickMetadata(
-    filteredMetadata,
-    page,
-    ARCHIVES_PER_PAGE,
-    `${Route.Tags}/${tag}`
-  );
+  const result = pick(filteredMetadata, page, ARCHIVES_PER_PAGE);
+  if (result === null) {
+    router.push(`${Route.Tags}/${tag}?page=1`);
+    return null;
+  }
 
+  const { selectedMetadata, totalPages } = result;
   return (
     <div className={classes.container}>
       <Container size={1000}>

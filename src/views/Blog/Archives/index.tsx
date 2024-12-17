@@ -1,22 +1,19 @@
-import { Stack, Center, Container } from '@mantine/core';
-import BlogTimeline from '@components/Timeline';
+import { redirect, useSearchParams } from 'next/navigation';
+import { Center, Container, Stack } from '@mantine/core';
 import Pagination from '@components/Pagination';
-import { useSearchParams } from 'next/navigation';
+import BlogTimeline from '@components/Timeline';
 import { ARCHIVES_PER_PAGE, Route } from '@config';
-import { useMdxMetadata } from '@contexts/Mdx';
-import { pickMetadata } from '@services/mdx/selection';
+import { useMdxData } from '@contexts/mdx-data';
 import classes from './BlogArchives.module.css';
 
 function BlogArchives() {
   const page = Number(useSearchParams().get('page') || 1);
-  const metadata = useMdxMetadata();
-  const { selectedMetadata, totalPages } = pickMetadata(
-    metadata,
-    page,
-    ARCHIVES_PER_PAGE,
-    Route.Archives
-  );
-
+  const { mdx, pick } = useMdxData();
+  const result = pick(mdx.metadata, page, ARCHIVES_PER_PAGE);
+  if (result === null) {
+    redirect(`${Route.Archives}?page=1`);
+  }
+  const { selectedMetadata, totalPages } = result;
   return (
     <div className={classes.container}>
       <Container size={1000}>

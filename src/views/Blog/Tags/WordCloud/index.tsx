@@ -1,27 +1,20 @@
-import { useMdxMetadata } from '@contexts/Mdx';
-import { useMediaQuery } from '@mantine/hooks';
-import Wordcloud from '@visx/wordcloud/lib/Wordcloud';
-import { Text } from '@visx/text';
-import { Route } from '@config';
 import { useRouter } from 'next/navigation';
-import { scaleLog } from '@visx/scale';
 import { Stack } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
+import { Route } from '@config';
+import { useMdxData } from '@contexts/mdx-data';
+import { scaleLog } from '@visx/scale';
+import { Text } from '@visx/text';
+import Wordcloud from '@visx/wordcloud/lib/Wordcloud';
 import { countWordFreq, WordData } from './utils';
 import classes from './BlogTags.module.css';
 
 const COLORS = ['#143059', '#2F6B9A', '#82a6c2'];
 
 function WordCloud() {
-  const metadata = useMdxMetadata();
+  const { mdx } = useMdxData();
   const matches = useMediaQuery('(max-width: 47.5em)');
-  const tags = metadata.reduce((acc: string[], curr) => {
-    curr.category.forEach((category) => {
-      acc.push(category);
-    });
-    return acc;
-  }, []);
-
-  const words = countWordFreq(tags);
+  const words = countWordFreq(mdx.categories);
   const router = useRouter();
   const setFontSize = (datum: WordData) =>
     scaleLog({

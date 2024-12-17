@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { rem } from '@mantine/core';
 import { createSpotlight, Spotlight as MantineSpotlight } from '@mantine/spotlight';
 import { Route } from '@config';
-import { useMdxData } from '@hooks/use-mdx-data';
+import { useMdxData } from '@contexts/mdx-data';
 import { IconSearch } from '@tabler/icons-react';
 
 export const [searchStore, searchHandlers] = createSpotlight();
