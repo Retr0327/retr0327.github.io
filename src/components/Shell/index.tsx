@@ -1,11 +1,11 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useDisclosure, useMediaQuery } from '@mantine/hooks';
-import { AppShell } from '@mantine/core';
-import { Route } from '@config';
 import { usePathname } from 'next/navigation';
-import { searchHandlers } from '@contexts/Spotlight';
+import { AppShell } from '@mantine/core';
+import { useDisclosure, useMediaQuery } from '@mantine/hooks';
+import { searchHandlers } from '@components/Spotlight';
+import { Route } from '@config';
 import Header from './Header';
 import Navbar from './Navbar';
 import classes from './Shell.module.css';
