@@ -57,11 +57,11 @@
 }
 
 .inner {
-  padding-top: 20px;
-
-  @media (max-width: 47.5em) {
-    padding-top: 60px;
+  @media (min-width: 47.5625em) {
+  padding-top: 40px;
+    padding-bottom: 80px;
   }
+
 }
 
 .label {
